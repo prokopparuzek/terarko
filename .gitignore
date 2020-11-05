@@ -6,3 +6,6 @@
 .tex
 *.swp
 *.swo
+*.bbl
+*.blg
+*.dvi

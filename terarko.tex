@@ -22,7 +22,7 @@
 
 \usepackage{graphicx} % balíček pro vkládání rastrových grafických souborů (PNG apod.)
 %\usepackage{epsfig} % balíčky pro vkládání grafických souborů typu EPS
-%\usepackage{float} % rozšířené možnosti umístění obrázků
+\usepackage{float} % rozšířené možnosti umístění obrázků
 
 \usepackage{caption} % pro popisky obrázků, tabulek atd.
 
@@ -294,6 +294,9 @@ Zde napište text úvodu (1-3 strany, nerozdělujte na podkapitoly) nebo jej vlo
 	% řazení: abecedně podle autora (resp. prvního slova, není-li znám autor)
 	\bibitem{odkaz} Autor. \ti{Název knihy}. Město. Nakladatelství. Rok.
 \end{thebibliography}
+\nocite{*}
+\bibliographystyle{czplain}
+\bibliography{literatura}
 
 
 %%%%%%%%%%%% PŘÍLOHY PRÁCE %%%%%%%%%%%%
