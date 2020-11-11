@@ -9,3 +9,6 @@
 *.bbl
 *.blg
 *.dvi
+terarko.fdb_latexmk
+terarko.fls
+.vim/

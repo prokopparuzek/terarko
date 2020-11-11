@@ -33,7 +33,7 @@
 %http://ftp.cvut.cz/tex-archive/macros/latex/contrib/listings/listings.pdf
 \usepackage{listingsutf8}
 \lstset{inputencoding=utf8/latin2}
-\usepackage{amsmath} % balíček pro pokročilou matematickou sazbu
+%\usepackage{amsmath} % balíček pro pokročilou matematickou sazbu
 %\usepackage{color} % pro možnost barevného textu
 %\usepackage{fancybox} % umožňuje pokročilé rámečkování
 
@@ -92,7 +92,12 @@
 
 \newcommand{\klicova}{Klíčová slova}   % zde NAPIŠTE česky max. 5 klíčových slov
 \newcommand{\keyword}{Key words}       % zde NAPIŠTE anglicky max. 5 klíčových slov (přeložte z češtiny)
-\newcommand{\abstrCZ}{Popis práce česky}    % zde NAPIŠTE abstrakt v češtině (cca 7 vět, min. 80 slov)
+\newcommand{\abstrCZ}{
+Cílem práce je vytvořit automatický systém na sledování teploty a vlhkosti v teráriu a dalších údajů s masožravkami. 
+A zpřístupnit naměřené údaje online, v podobě grafů, aby uživatel mohl v reálném čase sledovat jak se jeho kytičkám 
+daří. Zároveň kladu důraz na snadnou rozšiřitelnost o další naměřené hodnoty, či o úplně nové senzory, například senzor 
+CO\textsubscript{2} v ložnici a rozšířit tak měření třeba na celý dům.
+}    % zde NAPIŠTE abstrakt v češtině (cca 7 vět, min. 80 slov)
 \newcommand{\abstrEN}{Popis práce anglicky} % zde NAPIŠTE abstrakt v angličtině
 
 \newcommand{\prohlaseni}{Prohlašuji, že jsem svou seminární práci vypracoval\woman{} samostatně a použil\woman{} jsem \
@@ -259,42 +264,40 @@ V \kde\ dne .................... &........................................ \\	% 
 \chapter*{Úvod} % SEM NESAHEJTE!
 \addcontentsline{toc}{chapter}{Úvod} % SEM NESAHEJTE!
 %
-Zde napište text úvodu (1-3 strany, nerozdělujte na podkapitoly) nebo jej vložte ze samostatného souboru: např. příkazem 
-\texttt{\textbackslash input\{vnitrek\_uvod.tex\}}.
+%Zde napište text úvodu (1-3 strany, nerozdělujte na podkapitoly) nebo jej vložte ze samostatného souboru: např. 
+%příkazem \texttt{\textbackslash input\{vnitrek\_uvod.tex\}}.
 %
-%\input{vnitrek_uvod.tex}
+\input{text/uvod.tex}
 
 
-
-\chapter{Název první kapitoly}
+%\chapter{Název první kapitoly}
 %
-Tady začněte psát text první kapitoly práce nebo jej vložte ze samostatného souboru, např. příkazem 
-\texttt{\textbackslash input\{vnitrek\_kapitola1.tex\}}.
+%Tady začněte psát text první kapitoly práce nebo jej vložte ze samostatného souboru, např. příkazem 
+%\texttt{\textbackslash input\{vnitrek\_kapitola1.tex\}}.
 %
-%\input{vnitrek_kapitola1.tex} % text vkládán ze souboru. Pokud je v souboru uveden i příkaz \chapter{...}, tak ho 
+\input{text/stat.tex} % text vkládán ze souboru. Pokud je v souboru uveden i příkaz \chapter{...}, tak ho 
 %o 4 řádky výše vymažte.
 
 
 \chapter*{Závěr} % SEM NESAHEJTE!
 \addcontentsline{toc}{chapter}{Závěr} % SEM NESAHEJTE!
 %
-Zde napište text úvodu (1-3 strany, nerozdělujte na podkapitoly) nebo jej vložte ze samostatného souboru: např. příkazem 
-\texttt{\textbackslash input\{vnitrek\_zaver.tex\}}.
+%Zde napište text úvodu (1-3 strany, nerozdělujte na podkapitoly) nebo jej vložte ze samostatného souboru: např. 
+%příkazem \texttt{\textbackslash input\{vnitrek\_zaver.tex\}}.
 %
-%\input{vnitrek_zaver.tex}
+\input{text/zaver.tex}
 
 
 %%%%%%%%%%%% SEZNAM POUŽITÝCH ZDROJŮ (LITERATURA) %%%%%%%%%%%%
 \clearpage  % SEM NESAHEJTE!
 \addcontentsline{toc}{chapter}{Literatura} % SEM NESAHEJTE!
 
-\begin{thebibliography}{99}   
-	% formát: ČSN ISO 690. Můžete si to vygenerovat na http://www.citacepro.com (přihlaste se přes odkaz "ČVUT"), umí to 
-		% vygenerovat TeX
+%\begin{thebibliography}{99}   formát: ČSN ISO 690. Můžete si to vygenerovat na http://www.citacepro.com (přihlaste se 
+%  přes odkaz "ČVUT"), umí to vygenerovat TeX
 	% řazení: abecedně podle autora (resp. prvního slova, není-li znám autor)
-	\bibitem{odkaz} Autor. \ti{Název knihy}. Město. Nakladatelství. Rok.
-\end{thebibliography}
-\nocite{*}
+%	\bibitem{odkaz} Autor. \ti{Název knihy}. Město. Nakladatelství. Rok.
+%\end{thebibliography}
+%\nocite{*}
 \bibliographystyle{czplain}
 \bibliography{literatura}
 
@@ -313,5 +316,5 @@ Zde napište text první přílohy nebo jej vložte, např.: \texttt{\textbacksl
 %
 %\input{priloha_A.tex} % text vkládán ze souboru, kde je i příkaz \chapter{...}
 
-\lstinputlisting[language=Python]{dallas.py}
+%\lstinputlisting[language=Python]{dallas.py}
 \end{document} % SEM NESAHEJTE! Konec.
