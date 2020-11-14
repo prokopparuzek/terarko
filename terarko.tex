@@ -93,12 +93,11 @@
 \newcommand{\klicova}{Klíčová slova}   % zde NAPIŠTE česky max. 5 klíčových slov
 \newcommand{\keyword}{Key words}       % zde NAPIŠTE anglicky max. 5 klíčových slov (přeložte z češtiny)
 \newcommand{\abstrCZ}{
-Cílem práce je vytvořit automatický systém na sledování teploty a vlhkosti v teráriu a dalších údajů s masožravkami. 
-A zpřístupnit naměřené údaje online, v podobě grafů, aby uživatel mohl v reálném čase sledovat jak se jeho kytičkám 
-daří. Zároveň kladu důraz na snadnou rozšiřitelnost o další naměřené hodnoty, či o úplně nové senzory, například senzor 
-CO\textsubscript{2} v ložnici a rozšířit tak měření třeba na celý dům.
+Cílem práce je vytvořit automatický systém na sledování teploty a vlhkosti a dalších údajů v teráriu s masožravkami. 
+Zpřístupnit naměřené údaje online, v podobě grafů, aby uživatel mohl v reálném čase sledovat jak se jeho kytičkám daří. 
+Zároveň je kladen důraz na snadnou rozšiřitelnost o další naměřené hodnoty, či o úplně nové senzory, místnosti.
 }    % zde NAPIŠTE abstrakt v češtině (cca 7 vět, min. 80 slov)
-\newcommand{\abstrEN}{Popis práce anglicky} % zde NAPIŠTE abstrakt v angličtině
+\newcommand{\abstrEN}{} % zde NAPIŠTE abstrakt v angličtině
 
 \newcommand{\prohlaseni}{Prohlašuji, že jsem svou seminární práci vypracoval\woman{} samostatně a použil\woman{} jsem \
 pouze podklady (literaturu, projekty, SW atd.) uvedené v přiloženém seznamu.} % text prohlášení můžete mírně upravit 
@@ -267,7 +266,7 @@ V \kde\ dne .................... &........................................ \\	% 
 %Zde napište text úvodu (1-3 strany, nerozdělujte na podkapitoly) nebo jej vložte ze samostatného souboru: např. 
 %příkazem \texttt{\textbackslash input\{vnitrek\_uvod.tex\}}.
 %
-\input{text/uvod.tex}
+\input{prace/uvod.tex}
 
 
 %\chapter{Název první kapitoly}
@@ -275,7 +274,7 @@ V \kde\ dne .................... &........................................ \\	% 
 %Tady začněte psát text první kapitoly práce nebo jej vložte ze samostatného souboru, např. příkazem 
 %\texttt{\textbackslash input\{vnitrek\_kapitola1.tex\}}.
 %
-\input{text/stat.tex} % text vkládán ze souboru. Pokud je v souboru uveden i příkaz \chapter{...}, tak ho 
+\input{prace/stat.tex} % text vkládán ze souboru. Pokud je v souboru uveden i příkaz \chapter{...}, tak ho 
 %o 4 řádky výše vymažte.
 
 
@@ -285,7 +284,7 @@ V \kde\ dne .................... &........................................ \\	% 
 %Zde napište text úvodu (1-3 strany, nerozdělujte na podkapitoly) nebo jej vložte ze samostatného souboru: např. 
 %příkazem \texttt{\textbackslash input\{vnitrek\_zaver.tex\}}.
 %
-\input{text/zaver.tex}
+\input{prace/zaver.tex}
 
 
 %%%%%%%%%%%% SEZNAM POUŽITÝCH ZDROJŮ (LITERATURA) %%%%%%%%%%%%
@@ -297,9 +296,11 @@ V \kde\ dne .................... &........................................ \\	% 
 	% řazení: abecedně podle autora (resp. prvního slova, není-li znám autor)
 %	\bibitem{odkaz} Autor. \ti{Název knihy}. Město. Nakladatelství. Rok.
 %\end{thebibliography}
-%\nocite{*}
+\inputencoding{latin2}
+\nocite{*}
 \bibliographystyle{czplain}
 \bibliography{literatura}
+\inputencoding{utf8}
 
 
 %%%%%%%%%%%% PŘÍLOHY PRÁCE %%%%%%%%%%%%
