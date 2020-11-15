@@ -1772,7 +1772,7 @@ FUNCTION {format.bvolume}
 FUNCTION {format.url}
 { url empty$
   { "" }
-  { opt.url "$<${\tt " url * "}$>$" * tie.or.connect }
+  { opt.url "{\tt " url * "}" * tie.or.connect }
   if$
 }
 
