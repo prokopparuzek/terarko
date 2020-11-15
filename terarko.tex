@@ -10,6 +10,9 @@
 \usepackage[czech]{babel} % česky psaná práce, typografická pravidla. Překládejte pomocí "latex.exe" nebo "pdflatex.exe"
 %\usepackage{czech} % česky psaná práce. Překládejte pomocí "pdfCSlatex.exe" ("cslatex.exe" asi bude mít problém 
 %s balíkem geometry)
+% url
+\usepackage[nottoc]{tocbibind}
+\usepackage[hyphens]{url}
 
 \usepackage[a4paper, hmarginratio=3:2]{geometry} % využití A4 stránky a nastavení okrajů (u vazby bude širší)
 
@@ -21,6 +24,7 @@
 %Dokumentace: http://texdoc.net/texmf-dist/doc/generic/encxvlna/encxvlna.pdf (chová se správně k "vnitřku" listings?)
 
 \usepackage{graphicx} % balíček pro vkládání rastrových grafických souborů (PNG apod.)
+\graphicspath{{./images/}}
 %\usepackage{epsfig} % balíčky pro vkládání grafických souborů typu EPS
 \usepackage{float} % rozšířené možnosti umístění obrázků
 
@@ -71,11 +75,11 @@
 \newcommand{\druh}{Seminární práce} % nebo "Diplomová práce"
 \newcommand{\woman}{} % pokud jste ŽENA, ZMĚŇTE na: ...{\woman}{a} (je to do Prohlášení)
 
-%\newcommand{\logoCVUT}{\includegraphics{symbol_cvut_konturova_verze_cb.pdf}}  logo ČVUT -- podle grafického manuálu 
+\newcommand{\logoCVUT}{\includegraphics[height=6cm]{gympl}}  %logo ČVUT -- podle grafického manuálu 
 %ČVUT platného od prosince 2016. Pokud nevyhovuje PDF-verze, tak použijte jinou variantu loga: 
 %https://www.cvut.cz/logo-a-graficky-manual -> "Symbol a logo ČVUT v Praze"). Pokud chcete logo úplně vynechat, zadejte 
 %místo "\includegraphics{...}" text "\vspace{35mm}"
-\newcommand{\logoCVUT}{\vspace{35mm}}
+%\newcommand{\logoCVUT}{\vspace{35mm}}
 
 % přesně podle formuláře "Zadání bak./dipl. práce" VYPLŇTE:
 \newcommand{\nazevcz}{Monitoring terária}	% český název práce (přesně podle zadání!)
@@ -289,15 +293,15 @@ V \kde\ dne .................... &........................................ \\	% 
 
 %%%%%%%%%%%% SEZNAM POUŽITÝCH ZDROJŮ (LITERATURA) %%%%%%%%%%%%
 \clearpage  % SEM NESAHEJTE!
-\addcontentsline{toc}{chapter}{Literatura} % SEM NESAHEJTE!
+%\addcontentsline{toc}{chapter}{Literatura} % SEM NESAHEJTE!
 
 %\begin{thebibliography}{99}   formát: ČSN ISO 690. Můžete si to vygenerovat na http://www.citacepro.com (přihlaste se 
 %  přes odkaz "ČVUT"), umí to vygenerovat TeX
 	% řazení: abecedně podle autora (resp. prvního slova, není-li znám autor)
 %	\bibitem{odkaz} Autor. \ti{Název knihy}. Město. Nakladatelství. Rok.
 %\end{thebibliography}
-\inputencoding{latin2}
 \nocite{*}
+\inputencoding{latin2}
 \bibliographystyle{czplain}
 \bibliography{literatura}
 \inputencoding{utf8}
@@ -305,15 +309,16 @@ V \kde\ dne .................... &........................................ \\	% 
 
 %%%%%%%%%%%% PŘÍLOHY PRÁCE %%%%%%%%%%%%
 \newpage % SEM NESAHEJTE!
+\part*{Přílohy}
 \addcontentsline{toc}{chapter}{Přílohy} % SEM NESAHEJTE!
 \appendix % SEM NESAHEJTE!
 
 
 %%%%%%%%%%%% Příloha A (tj. 1. kapitola v rámci příloh) %%%%%%%%%%%%
 
-\chapter{Název první přílohy}
+\chapter{Kód}
 %
-Zde napište text první přílohy nebo jej vložte, např.: \texttt{\textbackslash input\{priloha\_A.tex\}}.
+%Zde napište text první přílohy nebo jej vložte, např.: \texttt{\textbackslash input\{priloha\_A.tex\}}.
 %
 %\input{priloha_A.tex} % text vkládán ze souboru, kde je i příkaz \chapter{...}
 
