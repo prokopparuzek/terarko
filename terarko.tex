@@ -11,8 +11,11 @@
 %\usepackage{czech} % česky psaná práce. Překládejte pomocí "pdfCSlatex.exe" ("cslatex.exe" asi bude mít problém 
 %s balíkem geometry)
 % url
+\usepackage[toc]{appendix}
 \usepackage[nottoc]{tocbibind}
 \usepackage[hyphens]{url}
+\renewcommand\appendixtocname{Přílohy}
+\renewcommand\appendixpagename{Přílohy}
 
 \usepackage[a4paper, hmarginratio=3:2]{geometry} % využití A4 stránky a nastavení okrajů (u vazby bude širší)
 
@@ -311,18 +314,16 @@ V \kde\ dne .................... &........................................ \\	% 
 
 %%%%%%%%%%%% PŘÍLOHY PRÁCE %%%%%%%%%%%%
 \newpage % SEM NESAHEJTE!
-\part*{Přílohy}
-\addcontentsline{toc}{chapter}{Přílohy} % SEM NESAHEJTE!
+%\addcontentsline{toc}{chapter}{Přílohy} % SEM NESAHEJTE!
 \appendix % SEM NESAHEJTE!
+%\addappheadtotoc
+\appendixpage
 
 
 %%%%%%%%%%%% Příloha A (tj. 1. kapitola v rámci příloh) %%%%%%%%%%%%
-
-\chapter{Kód}
-%
 %Zde napište text první přílohy nebo jej vložte, např.: \texttt{\textbackslash input\{priloha\_A.tex\}}.
 %
-%\input{priloha_A.tex} % text vkládán ze souboru, kde je i příkaz \chapter{...}
+\input{prace/prilohy.tex} % text vkládán ze souboru, kde je i příkaz \chapter{...}
 
-%\lstinputlisting[language=Python]{dallas.py}
+
 \end{document} % SEM NESAHEJTE! Konec.
