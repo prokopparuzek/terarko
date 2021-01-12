@@ -1,0 +1,47 @@
+% úvod
+Na celé řešení mám několik požadavků, které postupně detailně popíši tak, aby bylo vše jasné. Poněvadž není nic horšího 
+než nepřesné, či nejasné zadání, protože se pak výsledek špatně hodnotí a celkově upřesňování zadání v průběhu řešení je 
+cesta do pekel. Tyto požadavky jsou nutné, pokud vytvořené řešení bude mít funkce navíc, nevadí to, ale nesmí ovlivňovat 
+tyto zadané parametry.
+
+% měření
+První požadavek se bude týkat měření. Měřit chci teplotu a vlhkost v teráriu, když bude zvolený hardware umět i něco 
+jiného, klidně to použiji, ale hlavní požadavek je na tyto dvě veličiny. Ohledně frekvence měření chci zachytit denní 
+trendy, ale nepotřebuji data z každé minuty.
+
+% ukládání
+Další z požadavků je na ukládání dat. Když už je změřím, tak je chci mít vždy uložená, tedy i při výpadku internetu 
+a podobně. Při výpadku proudu nic nezměřím, takže to není třeba řešit. Co se týče vzdáleného ukládání, nepovažuji za 
+důležité, aby se všechna data propsala do cloudu, tedy i v případě nějakého výpadku se odeslala data co jsem změřil, ale 
+neodeslal. Když přijdu o jedno měření během krátkého výpadku, je mi to jedno a při větším nebo nějaké chybě si toho 
+všimnu a stejně to bude třeba opravit.
+
+% analýza dat
+Data mám uložena, co s nimi budu dělat? No tak v podstatě bych nemusel dělat nic, pouze si je zobrazit, což je to co 
+požaduji. Avšak hezká by byla možnost zobrazit si nějaké pokročilejší statistiky. Takže volitelně přidávám požadavek na 
+zobrazení různých časových rámců a statistiky k onomu časovému období, například průměrná, nejvyšší, nejnižší či medián 
+teploty a vlhkosti. Případně různé tendence, derivace, co bude v možnostech vybraného nástroje.
+
+% UI
+Nároky na uživatelské rozhraní v podstatě nemám. Pro správu senzorů je nepotřebné. Stejně moc obměňovat, či přidávat 
+nebudu, a i kdyby Stejně si budu muset napsat obslužný program pro ten či onen. Udělat nějaký obalující systém pro více 
+senzorů, či knihovnu není mým cílem. Pro zobrazení hodnot je důležité, ale ohledně nároků mi bude stačit velmi 
+jednoduché, pokud možno jediná stránka. Avšak případnému rozšíření se nebráním. Další části u nichž by bylo třeba 
+komunikovat s uživatelem mě nenapadají. Možná správa uživatelů s přístupem, ale vzhledem k tomu, že to dělám pro sebe 
+bych to vynechal.
+
+% bezpečnost
+K bezpečnosti bych rád zmínil toto. Bylo by dobré mít komunikaci po celé komunikační trase šifrovanou, ale dokud řešení 
+neobsahuje ovládání čehosi, není to úplně nezbytné. Případný útočník by si tak maximálně zjistil vlhkost\ldots v teráriu
+nebo by se mohl teoreticky vydávat za teploměr a kazit mi data. To by mohl být problém, takže pokud nevyžaduji 
+šifrování, ověření toho kdo posílá data požaduji určitě. Zabezpečení však považuji za důležité u samotné webové stránky, 
+která bude vystavena veřejně. Ne že by mi vadilo, že někdo sleduje jak se mají mé kytičky, ale mohlo by se z toho dát 
+odvodit, že je nezalévám tj. jsem pryč a v bytě nikdo není. Pokud si někdo dá tu práci, že mi napíchne připojení, nebo 
+přijede a odposlechne data z domácí sítě, tak má asi i možnosti jak si to, že nejsem doma zjistit jinak. Rozhodně to ale 
+bude složitější než otevření webové stránky.
+
+% cena
+Pak tu mám poslední z požadavků a tím je cena. Nejraději bych ho neřešil, ale žijeme ve světě kde je tento požadavek 
+velmi důležitý. Takže asi jediné cenové omezení je, abych si to mohl dovolit. Tady bych zopakoval, že cenu budu částečně 
+upřednostňovat před ostatními požadavky. Zejména v případech, kdy mám nějaký hardware doma, i když ne úplně vhodný, ale 
+dostačující. Tak ho upřednostním před vhodnějším, který nemám a musel bych ho draze shánět.
