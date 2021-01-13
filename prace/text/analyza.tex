@@ -17,3 +17,18 @@ umožní zjišťovat kde vlastně chyba nastala, a může pomoci i s řešením.
 pouze na jedno místo v cloudu, poněvadž ten sám o sobě pokud je kvalitní je výborně zálohovaný, pokud o data v něm 
 nějakým nedopatřením přijdu, nějak mě to neovlivní, bude to škoda, avšak závažné důsledky to mít nebude a navíc tím, že 
 nebudu řešit zálohy a rozkopírovávání dat, či jejich konzistenci na různých místech se celé řešení výrazně zjednoduší.
+
+% data flow
+Teď se dostávám k samotnému data flow, tedy jak a kam mi potečou data co naměřím. Začnu u senzoru, ten změří data 
+a pošle je do obslužného počítače, to může být v podstatě cokoli se schopností ovládat senzor,ukládat data a schopností 
+poslat data přes wifi. Ten data zaloguje na perzistentní úložiště a pošle je na centrální bránu pomocí wifi sítě, což mi 
+přijde nejednoduší, nemusím nikde tahat kabely, či řešit jiné bezdrátové technologie, poněvadž wifi síť má v místě 
+měření dostatečné pokrytí. Teď se dostávám k takovému kontroverznímu prvku celého flow, a tím je centrální brána. To je 
+v podstatě počítač, který jediný co dělá je přeposílání dat ze senzorů někam jinam, dal by se tedy úplně odstranit s tím 
+že měřící stanice by data odesílala přímo do internetu, ale já ji zahrnul z těchto důvodů. Díky tomu, že s internetem 
+komunikuje pouze jedna stanice nemusím na ostatních řešit jejich autentizaci vůči cloudu, či různé SSL certifikáty 
+a podobně. A díky tomu na jejich místech mohu nasadit mnohem jednoduší zařízení. Dále mi to umožní přístup k datům doma 
+i bez internetu, kdybych si je chtěl nějak zobrazit... A Také to zjednoduší ladění celého systému, kdy například 
+programy mohu testovat u sebe na počítači kdy data budu brát z centrální brány a nebudu muset vůbec zasahovat do kódu 
+v senzoru. No a to je celé z brány pošlu data do cloudu a tam jejich cesta končí, pokud tedy vynechám cestu z cloudu za 
+účelem jejich zobrazení.
