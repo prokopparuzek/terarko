@@ -27,8 +27,22 @@ měření dostatečné pokrytí. Teď se dostávám k takovému kontroverznímu 
 v podstatě počítač, který jediný co dělá je přeposílání dat ze senzorů někam jinam, dal by se tedy úplně odstranit s tím 
 že měřící stanice by data odesílala přímo do internetu, ale já ji zahrnul z těchto důvodů. Díky tomu, že s internetem 
 komunikuje pouze jedna stanice nemusím na ostatních řešit jejich autentizaci vůči cloudu, či různé SSL certifikáty 
-a podobně. A díky tomu na jejich místech mohu nasadit mnohem jednoduší zařízení. Dále mi to umožní přístup k datům doma 
+a podobně. To mi umožní na jejich místech mohu nasadit mnohem jednoduší zařízení. Dále mi to umožní přístup k datům doma 
 i bez internetu, kdybych si je chtěl nějak zobrazit... A Také to zjednoduší ladění celého systému, kdy například 
 programy mohu testovat u sebe na počítači kdy data budu brát z centrální brány a nebudu muset vůbec zasahovat do kódu 
 v senzoru. No a to je celé z brány pošlu data do cloudu a tam jejich cesta končí, pokud tedy vynechám cestu z cloudu za 
 účelem jejich zobrazení.
+
+% UI + analýza
+Uživatelské rozhraní pro zobrazení hodnot jsem se rozhodl z důvodu co největší přenositelnosti ji implementovat jako 
+webovou stránku. Takže celá jeho logika a vykreslování bude řešená v javascriptu a až na klientském zařízení, cloud 
+použiji pouze na to, abych z něj vytáhl potřebná data a samozřejmě na hostování celé aplikace. Na této stránce určitě 
+zobrazím graf vývoje změřených hodnot, myslím že v základu by mohlo stačit tak posledních 48 hodin, ale asi bych přidal 
+možnost i delších časových úseků. Z dalších údajů bych si zobrazil tak možná medián naměřených hodnot a možná průměr, 
+ale další údaje mi už přijdou zbytečné. Další analýzy dělat nebudu, spíše  bude sledovat jak se kytičkám daří a případně 
+je po nasbírání zkušeností doplním.
+
+% bezpečnost
+Co se otázky bezpečnosti týče, tak vynechám šifrování na cestě od senzoru do brány, zejména z důvodu jednoduššího ladění 
+a implementace, avšak co na této cestě doplním je elektronický podpis zprávy, aby se mi nikdo nefušoval do komunikace. 
+Zabezpečení komunikace s cloudem už budu řešit prostředky té dané služby i co se zobrazení hodnot týče.
