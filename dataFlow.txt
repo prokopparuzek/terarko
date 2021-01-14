@@ -1,4 +1,5 @@
 @startuml
+scale 4096 width
 "Měření" --> [Logování]"SD karta"
 "Měření" -right-> [Wifi]"Brána"
 "Brána" -right-> [Internet]"Cloud"
