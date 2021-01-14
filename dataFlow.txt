@@ -1,0 +1,6 @@
+@startuml
+"Měření" --> [Logování]"SD karta"
+"Měření" -right-> [Wifi]"Brána"
+"Brána" -right-> [Internet]"Cloud"
+"Cloud" -right-> [Internet]"Zobrazení uživateli"
+@enduml
