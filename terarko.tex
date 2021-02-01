@@ -79,7 +79,7 @@
 \newcommand{\druh}{Seminární práce} % nebo "Diplomová práce"
 \newcommand{\woman}{} % pokud jste ŽENA, ZMĚŇTE na: ...{\woman}{a} (je to do Prohlášení)
 
-\newcommand{\logoCVUT}{\includegraphics[height=6cm]{gympl}}  %logo ČVUT -- podle grafického manuálu 
+\newcommand{\logoCVUT}{\includegraphics[height=8cm]{gympl}}  %logo ČVUT -- podle grafického manuálu 
 %ČVUT platného od prosince 2016. Pokud nevyhovuje PDF-verze, tak použijte jinou variantu loga: 
 %https://www.cvut.cz/logo-a-graficky-manual -> "Symbol a logo ČVUT v Praze"). Pokud chcete logo úplně vynechat, zadejte 
 %místo "\includegraphics{...}" text "\vspace{35mm}"
@@ -100,16 +100,16 @@
 
 \newcommand{\klicova}{Klíčová slova}   % zde NAPIŠTE česky max. 5 klíčových slov
 \newcommand{\keyword}{Key words}       % zde NAPIŠTE anglicky max. 5 klíčových slov (přeložte z češtiny)
-\newcommand{\abstrCZ}{
-Cílem práce je vytvořit automatický systém na sledování teploty a vlhkosti a dalších údajů v teráriu s masožravými 
-rostlinami. Zpřístupnit naměřené údaje online, v podobě grafů, aby uživatel mohl v reálném čase sledovat jak se jeho 
+\newcommand{\abstrCZ}{ Cílem práce je vytvořit automatický systém na sledování teploty a vlhkosti a dalších údajů v teráriu s masožravými rostlinami. Zpřístupnit naměřené údaje online, v podobě grafů, aby uživatel mohl v reálném čase sledovat jak se jeho 
 kytičkám daří. Zároveň je kladen důraz na snadnou rozšiřitelnost o další naměřené hodnoty, či o úplně nové senzory, 
-místnosti.
-}    % zde NAPIŠTE abstrakt v češtině (cca 7 vět, min. 80 slov)
+místnosti.}    % zde NAPIŠTE abstrakt v češtině (cca 7 vět, min. 80 slov)
 \newcommand{\abstrEN}{} % zde NAPIŠTE abstrakt v angličtině
 
-\newcommand{\prohlaseni}{Prohlašuji, že jsem svou seminární práci vypracoval\woman{} samostatně a použil\woman{} jsem \
-pouze podklady (literaturu, projekty, SW atd.) uvedené v přiloženém seznamu.} % text prohlášení můžete mírně upravit 
+\newcommand{\prohlaseni}{Prohlašuji, že jsem svou seminární práci vypracoval\woman{} samostatně a použil\woman{} jsem pouze podklady (literaturu, projekty, SW atd.) uvedené v seznamu vloženém v práci. 
+
+Prohlašuji, že tištěná verze a elektronická verze práce jsou shodné. 
+
+Nemám závažný důvod proti zpřístupňování této práce v souladu se zákonem č. 121/2000 Sb., o právu autorském, o právech souvisejících s právem autorským a o změně některých zákonů (autorský zákon) v platném znění. } % text prohlášení můžete mírně upravit 
 %:-)
 
 \newcommand{\podekovani}{Děkuji ... za ... (upravte makro {\texttt{\textbackslash podekovani\{\}}}).} % NAPIŠTE 
@@ -125,29 +125,29 @@ pouze podklady (literaturu, projekty, SW atd.) uvedené v přiloženém seznamu.
 \thispagestyle{empty}
 
 \begin{center}
-	{\LARGE
-		\cvut\par
-		\fjfi
-	}
-	\vspace{10mm}
+   {\Large \MakeUppercase{\druh}}
+	\vspace{5mm}
 
 	\begin{tabular}{c}
 		\tb{\ksi} \\[3pt]   \tb{Předmět: \obor}\\
 	\end{tabular}
 
-   \vspace{10mm} \logoCVUT \vspace{15mm} 
-
+	\vspace{10mm}
    {\huge \tb{\nazevcz}\par}
    \vspace{5mm}   {\huge \tb{\nazeven}\par}
    
-   \vspace{15mm}
-   {\Large \MakeUppercase{\druh}}
+   \vspace{10mm}
+	 \begin{tabular}{c}
+			 \LARGE{\tb{Škola:} \tb{\cvut}}
+	\end{tabular}
+
+   \vspace{10mm} \logoCVUT \vspace{15mm} 
 
    \vfill
    {\large
 	\begin{tabular}{ll}
 	Vypracoval: & \autor\\
-	Vedoucí práce: & \vedouci\\
+	Konzultant: & \vedouci\\
 	Rok: & \rok
 	\end{tabular}
    }
@@ -238,20 +238,20 @@ V \kde\ dne .................... &........................................ \\	% 
 \begin{tabular}{ll}
   {\em Název práce:} & ~ \\
   \multicolumn{2}{l}{\odstavec{\textwidth}{\bf \nazevcz}} \\[1em]
-  {\em Autor:} & \autor \\[1em]
+	%{\em Autor:} & \autor \\%[1em]
 %  {\em Studijní program:} & \program \\
-  {\em Předmět:} & \obor \\
-  {\em Druh práce:} & \druh \\[1em]
-  {\em Vedoucí práce:} & \odstavec{\delka}{\vedouci\\ \pracovisteVed} \\
+	%{\em Předmět:} & \obor \\
+	%{\em Druh práce:} & \druh \\%[1em]
+	%{\em Vedoucí práce:} & \odstavec{\delka}{\vedouci\\ \pracovisteVed} \\
 %	{\em Konzultant:} & -- %\odstavec{\delka}{\konzultant \\ \pracovisteKonz}  % VYMAŽTE text "-- %" v případě, že jste 
-	%	       \\[1em]
-	\multicolumn{2}{l}{\odstavec{\textwidth}{{\em Abstrakt:} ~ \abstrCZ  }} \\[1em]
+	%	        \\[1em]
+	\multicolumn{2}{l}{\odstavec{\textwidth}{{\em Anotace:} ~ \abstrCZ  }} \\[1em]
   {\em Klíčová slova:} & \odstavec{\delka}{\klicova} \\[2em]
 
   {\em Title:} & ~\\
-  \multicolumn{2}{l}{\odstavec{\textwidth}{\bf \nazeven}}\\[1em]
-  {\em Author:} & \autor \\[1em]
-  \multicolumn{2}{l}{\odstavec{\textwidth}{{\em Abstract:} ~ \abstrEN  }} \\[1em]
+	\multicolumn{2}{l}{\odstavec{\textwidth}{\bf \nazeven}}\\[1em]
+	%{\em Author:} & \autor \\[1em]
+	\multicolumn{2}{l}{\odstavec{\textwidth}{{\em Annotation:} ~ \abstrEN  }} \\[1em]
   {\em Key words:} & \odstavec{\delka}{\keyword}
 \end{tabular}
 
