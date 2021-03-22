@@ -17,3 +17,29 @@ nebude to pravé ořechové. Avšak v případě zmíněných problémů mi zvol
 základ stanice na něco vhodnějšího, za předpokladu, že se zvolená deska zvládne připojit na lokální síť. Například mohu 
 použít oblíbenou desku ESP8266 či ESP32, které se cenově pohybují v řádu stokorun, pinů mají dostatek, disponují Wifi 
 čipem a umožňují použití nízko odběrových módů při běhu na baterii.
+
+% senzory
+% BME280
+A teď součást bez které by zbytek byl k ničemu, samotné senzory. Pro měření v samotném teráriu jsem zvolil BME280. Jedná 
+se o senzor od firmy Bosh pro měření teploty, vlhkosti a atmosférického tlaku, vzhledem k tomu, že se dodává pouze v SMD 
+variantě, jsem zvolil modul, který obsahuje tento senzor, potřebné součástky kolem a má vyvedenou I2C sběrnici, pro 
+snadné připojení k řídící desce. Dal by se též použít libovolný jiný senzor obdobných parametrů, ale tento má příjemnou 
+cenu a velmi dobrou přesnost měření, a navíc se díky I2C snadno propojí se zbytkem systému.
+% obrázek
+
+% DS1820
+Za účelem případné další analýzy, jsem umístil pár senzorů i mimo terárium, abych mohl sledovat závislost teploty vně 
+a uvnitř. Tady už nejde tolik o přesnost, takže jsem použil senzory co jsem našel doma. Na měření teploty jsem použil 
+senzor od firmy DS1820. Jde o jednoduché a levné čidlo, moje je v pouzdru TO-92, to se používá třeba taky pro 
+tranzistory, OneWire sběrnicí, speciální sběrnice od firmy Dallas, která potřebuje pouze tři dráty a umožňuje i použití 
+pouze dvou a digitálním měřením teploty s přesností 0.5 \textdegree C.
+% obrázek
+
+% DHT11
+A jako poslední jsem použil oblíbené čidlo teploty a vlhkosti DHT11. Jde o čínský výrobek v modré krabičce se čtyřmi 
+vývody, z nichž jeden je neaktivní. Čidlo používá vlastní sběrnici, které však též stačí tři dráty, jako výše zmíněné 
+OneWire. Senzor teploty jsem zdvojit, poněvadž toto čidlo je velmi levné a bohužel též nepřesné, rozlišení 1 \textdegree C při 
+možné odchylce až 2 \textdegree C, není úplně ideální, proto jsem ho doplnil výše zmíněným teploměrem. U vlhkosti je to podobné, 
+ale vzhledem k tomu, že se jednak hůře ovlivňuje a také se pohybuje ve větším intervalu než teplota mi odchylka 5 \% zas 
+tolik nevadí.
+% obrázek
