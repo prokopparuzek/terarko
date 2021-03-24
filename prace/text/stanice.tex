@@ -1,0 +1,51 @@
+% výběr jazyka
+Jako jazyk pro programování měřící stanice, jsem zvolil golang. Jedná se o kompilovaný, staticky typovaný jazyk od 
+Googlu,  na jehož vývoji se podílel například Ken Thompson, spolutvůrce programovacího jazyka C, z jehož syntaxe vychází 
+i syntaxe Go. Jedna z mnoha výhod je snadná cross-kompilace, která mi umožňuje kompilovat programy na svém počítači a do 
+stanice nahrávat už jen binární kód. Čemuž pomáhá i to, že překladač implicitně linkuje staticky.
+
+% koncepce programu
+Obecná koncepce programu je asi takováto. Budu sledovat běh funkce main, kterou jsem se snažil co nejvíce vyčistit.
+\lstinputlisting[language=go,breaklines=true]{src/measure.go}
+Na začátku importuji pár knihoven, ve funkci main, jako první nastavím balíček logrus, který mi zajišťuje logování, 
+nastavuji co chci logovat, kam a jak to má zformátovat. Poté otevřu spojení na server, inicializuji knihovnu na použití 
+periferií a nastavím cron, aby mi spustil měření každých 15 minut. Nakonec je takový trik, jehož jediným účelem je, aby 
+hlavní gorutina neskončila, jedná se o čtení z kanálu do kterého, však nikdy nic nezapíši. A jelikož jde o blokující 
+operaci, program nikdy neskončí.
+
+% logování
+Na začátku jsem psal o logování, rád bych ho popsal trochu detailněji. Používám balíček logrus což je taková rozšířená 
+verze balíčku log ze standardní knihovny. Umožňuje mi detailně logovat běh programu a strukturovat logy, například tím, 
+že ke každé zprávě kterou vypíši, mi doplní důležité informace, jako z jaké funkce byl zavolán, na jakém řádku, nebo čas 
+kdy byl zavolán. Toto se dá libovolně měnit. A navíc díky němu mohu nechat ladící hlášky v programu celou dobu, jenom na 
+začátku v inicializaci mu řeknu, že mě zajímají pouze chyby a on mi hlášky s nižší prioritou, tj. debugovací informace 
+a podobně nebude vypisovat. Takže po nasazení, si jen zvolím soubor, kam má logy ukládat, abych o ně nepřišel a prioritu 
+co má vypisovat, a pak můžu jen sledovat chyby.
+
+% měření
+Samotné získávání dat je velmi jednoduché. Každých 15 minut se zavolá funkce getMeasure(),která postupně projde přes 
+všechny připojené senzory, zavolá funkce, které je obsluhují, v případě chyby je zkouší zavolat vícekrát a vrátí pole 
+s naměřenými hodnotami. Pro měření jsem se snažil co nejvíce využít možností, které poskytuje knihovna periph.io, takže 
+například data vracím ve formě struktury z této knihovny a používám ji pro získávání hodnot ze dvou senzorů, pro třetí 
+ji nepoužívám jen z toho důvodu, že ho zatím nepodporuje. Měření z BME280 je velmi jednoduché. V podstatě otevřu 
+sběrnici, přečtu data a vrátím je, vše za použití výše zmíněné knihovny. Z DS1820 to je velmi podobné, jen nemohu použít 
+periph.io, takže používám knihovnu, jež využívá modul kernelu, který zpřístupňuje tento senzor přes virtuální souborový 
+systém. Senzor DHT11 je na použití asi nejsložitější. Používám sice externí knihovnu, avšak ta pro přístup ke GPIO 
+využívá periph.io. Jinak je měření velmi obdobné jako u ostatních čidel, s tím rozdílem, že je velmi chybové, takže se 
+musí vícekrát opakovat.
+\subsection{DHT11}
+S tímto senzorem jsem měl asi největší problémy. Nejenom že jsem musel laborovat s nastavením verze api knihovny 
+periph.io, ale i samotná knihovna pro obsluhu senzoru obsahovala chyby. Takže jsem ji důkladně prozkoumal a porovnal 
+s datasheetem k senzoru. Našel jsem dvě zásadní chyby. Jedna byla, že knihovna vyslal příliš krátký startovací pulz, 
+takže ani čidlo neprobudila, to se dalo vyřešit jednoduše, prostě jsem do programu přidal pauzu. A druhá, že špatně 
+zpracovávala data co z čidla četla. Zpracovávala je jako jedno velké šestnáctibitové číslo, ale v datasheetu jsem se 
+dočetl že tyto dva bajty představují číslo v desetinné čárce, ale velmi zvláštně. První bajt je celá část a druhý 
+desetinná a zároveň s tím se v datasheetu píše že rozlišovací schopnost senzoru je 1 \textdegree C a 5 \%, takže jsem 
+druhý bajt zahodil a dál pracoval pouze s tím prvním. A to fungovalo na jedničku. Tuto zvláštnost s rozlišením bych asi 
+vysvětlil tím, že komunikační protokol bude schodný i s dražšími senzory s lepším rozlišením a to možná souvisí 
+i s chybami v knihovně, poněvadž je určena i pro ně. Takže abych jejich podporu nerozbil jsem mé úpravy podmínil 
+použitím správného typu čidla. Moje upravené verze kterou používám, je k nalezení zde 
+\href{https://github.com/prokopparuzek/go-dht.git}{github.com/prokopparuzek/go-dht.git}
+% ukládání dat
+\subsection{NATS}
+% odesílání
