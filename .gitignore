@@ -15,3 +15,8 @@ terarko.fls
 !terarko.pdf
 .ipynb_checkpoints/
 src/
+*.glo
+*.glg
+*.gls
+*.glsdefs
+*.ist

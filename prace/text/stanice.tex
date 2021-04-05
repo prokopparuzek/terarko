@@ -1,8 +1,7 @@
 % výběr jazyka
-Jako jazyk pro programování měřící stanice, jsem zvolil golang. Jedná se o kompilovaný, staticky typovaný jazyk od 
-Googlu,  na jehož vývoji se podílel například Ken Thompson, spolutvůrce programovacího jazyka C, z jehož syntaxe vychází 
-i syntaxe Go. Jedna z mnoha výhod je snadná cross-kompilace, která mi umožňuje kompilovat programy na svém počítači a do 
-stanice nahrávat už jen binární kód. Čemuž pomáhá i to, že překladač implicitně linkuje staticky.
+Jako jazyk pro programování měřící stanice, jsem zvolil \gls{go}. Jedna z mnoha výhod je snadná \gls{cross-kompilace} 
+která mi umožňuje kompilovat programy na svém počítači a do stanice nahrávat už jen binární kód. Čemuž pomáhá i to, že 
+překladač implicitně \glslink{linkovani}{linkuje} staticky.
 
 % koncepce programu
 Obecná koncepce programu je asi takováto. Budu sledovat běh funkce main, kterou jsem se snažil co nejvíce vyčistit.

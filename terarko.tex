@@ -48,6 +48,10 @@
 %\usepackage{index} % nutno použít v případě tvorby rejstříku balíčkem makeindex
 %\newindex{default}{idx}{ind}{Rejstřík} % zavádí rejstřík v případě použití balíku index
 
+\usepackage[toc, nopostdot]{glossaries}
+\makeglossaries
+\input{prace/text/slovnicek.tex}
+
 
 \frenchspacing % za větou bude mezislovní mezera (v anglických textech je mezera za větou delší)
 \widowpenalty=1000 % "síla" zákazu vdov (= jeden řádek ze začátku odstavce na konci stránky)
@@ -271,6 +275,8 @@ V \kde\ dne .................... &........................................ \\	% 
 %--------------------------------------------------------
 %|         Zde začíná SAMOTNÁ PRÁCE (text)              |
 %--------------------------------------------------------
+% Slovníček pojmů
+\printglossary[title={Slovníček pojmů}]
 
 \chapter*{Úvod} % SEM NESAHEJTE!
 \addcontentsline{toc}{chapter}{Úvod} % SEM NESAHEJTE!

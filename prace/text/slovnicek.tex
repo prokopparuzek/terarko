@@ -1,0 +1,29 @@
+\newglossaryentry{go}
+{
+  name={Go},
+  description={Kompilovaný, staticky typovaný jazyk od Googlu, a na jehož vývoji se podílel například Ken Thompson, 
+spolutvůrce programovacího jazyka C, z jehož syntaxe vychází i syntaxe Go. Cíle jazyka jsou zejména jednoduchá syntax, 
+strmá křivka učení, či snadná tvorba vícevláknových aplikací. Kompromisem v návrhu jazyka bylo zahrnutí \gls{GC}, 
+programy jsou sice pomalejší, ale kód jednodušší. Jazyk je oblíben i mimo Google, je v něm napsán například Docker, či 
+ho používá Dropbox.}
+}
+\newglossaryentry{GC}
+{
+  name={garbage collector},
+  description={Způsob automatické správy paměti. Funguje tak, že speciální algoritmus (garbage collector) vyhledává 
+a uvolňuje úseky paměti, které již program nebo proces nepoužívá. Programátor to tedy již nemusí řešit a tím odpadá celá 
+řada chyb způsobených zapomenutím na uvolnění paměti\ldots Nevýhodou je, že si garbage collector ukousne část výkonu 
+procesoru pro sebe, takže pak program běží pomaleji.}
+}
+\newglossaryentry{cross-kompilace}
+{
+  name={cross-kompilace},
+  description={Překlad programu pro jinou platformu, než na které je překládán.}
+}
+\newglossaryentry{linkovani}
+{
+  name={linkování},
+  description={Proces spojení objektového souboru vygenerovaného překladačem s knihovnami, či jinými soubory. Existují 
+dva typy dynamické, kdy se knihovny připojují až za běhu a jsou společné pro všechny programy běžící na daném počítači 
+a statické, kdy jsou všechny knihovny přibaleny k výslednému spustitelnému souboru.}
+}
