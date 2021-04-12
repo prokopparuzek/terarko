@@ -52,6 +52,10 @@
 %\usepackage{index} % nutno použít v případě tvorby rejstříku balíčkem makeindex
 %\newindex{default}{idx}{ind}{Rejstřík} % zavádí rejstřík v případě použití balíku index
 
+%biblatex
+\usepackage[backend=biber,style=iso-authoryear]{biblatex}
+%\bibliographystyle{czplain}
+\addbibresource{literatura.bib}
 
 \frenchspacing % za větou bude mezislovní mezera (v anglických textech je mezera za větou delší)
 \widowpenalty=1000 % "síla" zákazu vdov (= jeden řádek ze začátku odstavce na konci stránky)
@@ -300,12 +304,15 @@ V \kde\ dne .................... &........................................ \\	% 
 
 %\begin{thebibliography}{99}   formát: ČSN ISO 690. Můžete si to vygenerovat na http://www.citacepro.com (přihlaste se 
 %  přes odkaz "ČVUT"), umí to vygenerovat TeX
-	% řazení: abecedně podle autora (resp. prvního slova, není-li znám autor)
-%	\bibitem{odkaz} Autor. \ti{Název knihy}. Město. Nakladatelství. Rok.
+% řazení: abecedně podle autora (resp. prvního slova, není-li znám autor)
+%\bibitem{odkaz} Autor. \ti{Název knihy}. Město. Nakladatelství. Rok.
 %\end{thebibliography}
 \nocite{*}
-\bibliographystyle{czplain}
-\bibliography{literatura}
+\printbibliography[
+	heading=bibintoc,
+	title={Literatura}
+]
+\newpage
 
 %seznam obrázků
 \listoffigures
