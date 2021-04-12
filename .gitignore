@@ -20,3 +20,8 @@ src/
 *.gls
 *.glsdefs
 *.ist
+*-blx.bib
+*.bcf
+*.lof
+*.lot
+*.xml
