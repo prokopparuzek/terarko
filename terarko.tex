@@ -16,6 +16,9 @@
 \usepackage[hyphens]{url}
 \renewcommand\appendixtocname{Přílohy}
 \renewcommand\appendixpagename{Přílohy}
+%pagestyle obsahu
+\usepackage{tocloft}
+\tocloftpagestyle{obsah}
 
 \usepackage[a4paper, hmarginratio=3:2]{geometry} % využití A4 stránky a nastavení okrajů (u vazby bude širší)
 
@@ -44,6 +47,7 @@
 %\usepackage{amsmath} % balíček pro pokročilou matematickou sazbu
 %\usepackage{color} % pro možnost barevného textu
 %\usepackage{fancybox} % umožňuje pokročilé rámečkování
+\usepackage{fancyhdr} %zahlavi a zapati
 
 %\usepackage{index} % nutno použít v případě tvorby rejstříku balíčkem makeindex
 %\newindex{default}{idx}{ind}{Rejstřík} % zavádí rejstřík v případě použití balíku index
@@ -58,6 +62,23 @@
 \textwidth=150mm      % šířka textu na stránce
 \textheight=240mm     % "výška" textu na stránce
 
+%záhlaví
+\fancypagestyle{plain}
+{
+	\setlength{\headheight}{16pt}
+	\fancyhf{}
+	\fancyhead[RO]{Prokop Parůžek}
+	\fancyhead[LO]{Monitoring terária}
+	\fancyhead[RE]{Gymnázium Teplice}
+	\fancyfoot[C]{\thepage}
+}
+%záhlaví obsahu
+\fancypagestyle{obsah}
+{
+	\fancyhf{}
+	\fancyhead[R]{Prokop Parůžek}
+	\fancyhead[L]{Školní rok 2020/2021}
+}
 
 \pagenumbering{arabic} % číslování stránek arabskými číslicemi
 \pagestyle{plain}      % stránky číslované dole uprostřed
@@ -71,7 +92,7 @@
 
 
 %% --- zde jsou zavedeny některé "konstanty" - některé musíte změnit! --- %%
-\newcommand{\cvut}{Gymnázium Teplice}
+\newcommand{\cvut}{Gymnázium Teplice, Čs. dobrovolců 11}
 \newcommand{\fjfi}{}
 \newcommand{\ksi}{}
 \newcommand{\program}{} % změňte, pokud máte jiný stud. program
@@ -89,7 +110,7 @@
 % přesně podle formuláře "Zadání bak./dipl. práce" VYPLŇTE:
 \newcommand{\nazevcz}{Monitoring terária}	% český název práce (přesně podle zadání!)
 \newcommand{\nazeven}{Terrarium monitoring}	% anglický název práce (přesně podle zadání!)
-\newcommand{\autor}{Prokop Parůžek}   % vyplňte své jméno a příjmení (s akademickým titulem, máte-li jej)
+\newcommand{\autor}{Prokop Parůžek, 7.A}   % vyplňte své jméno a příjmení (s akademickým titulem, máte-li jej)
 \newcommand{\vedouci}{Ing. Věra Minaříková} % vyplňte jméno a příjmení vedoucího práce, včetně titulů, např.: Doc. Ing. 
 %Ivo Malý, Ph.D.
 \newcommand{\pracovisteVed}{} % ZMĚŇTE, pokud vedoucí Vaší práce není z KSI
@@ -147,42 +168,16 @@ Nemám závažný důvod proti zpřístupňování této práce v souladu se zá
    \vfill
    {\large
 	\begin{tabular}{ll}
+	Kraj: & Ústecký\\
 	Vypracoval: & \autor\\
 	Konzultant: & \vedouci\\
-	Rok: & \rok
 	\end{tabular}
-   }
+	 }\\
+\vspace{1cm}
+\LARGE{Teplice 2021}
 \end{center}
 
 \clearpage{\pagestyle{empty}\cleardoublepage} % prázdná stránka za tou "titulní", bez čísla
-
-%%%%%%%%%%%% ZADÁNÍ PRÁCE %%%%%%%%%%%%
-% Zadání (podepsané děkanem!) musíte NASKENOVAT. Ideálně jako 2stránkové PDF (soubor "zadani_cele.pdf"). Před svázáním 
-% to v jednom výtisku VYMĚNÍTE ZA ORIGINÁLNÍ ZADÁNÍ (podepsané děkanem fakulty)!
-%\newpage  % SEM NESAHEJTE!
-%\thispagestyle{empty} % SEM NESAHEJTE!
-
-%% zde podle toho, jak jste zadání naskenovali, VYBERTE variantu A, B nebo C:
-%
-% --- varianta A: zadání naskenované jako 2stránkové PDF:
-%\includepdf[pages={1,2}]{zadani_cele.pdf} % NAHRAĎTE správným souborem!
-%
-%% --- varianta B: zadání naskenované jako jednotlivé stránky:
-%\includepdf[pages={1}]{zadani1.pdf} % 1. strana zadání v PDF
-%\includepdf[pages={1}]{zadani2.pdf} % 2. strana zadání v PDF
-%
-%% --- varianta C: zadání naskenované jako 2 samostatné obrázky:
-%% 1. strana zadání
-%\begin{center}
-%     \includegraphics[width=1\textwidth]{zadani1.jpg}
-%\end{center}
-%% 2. strana zadání
-%\newpage  % SEM NESAHEJTE!
-%\thispagestyle{empty} % SEM NESAHEJTE!
-%\begin{center}
-%     \includegraphics[width=1\textwidth]{zadani2.jpg}
-%\end{center}
-
 
 %%%%%%%%%%%% Prohlášení -- SEM NESAHEJTE! Generuje se automaticky z výše nastavených maker \kde{} a \prohlaseni{}. %%%%%%%%%%%%
 \newpage % SEM NESAHEJTE!
@@ -237,8 +232,8 @@ V \kde\ dne .................... &........................................ \\	% 
 
 % použití přípravy:    % dovnitř "tabular" vůbec NESAHEJTE!
 \begin{tabular}{ll}
-  {\em Název práce:} & ~ \\
-  \multicolumn{2}{l}{\odstavec{\textwidth}{\bf \nazevcz}} \\[1em]
+%  {\em Název práce:} & ~ \\
+%	\multicolumn{2}{l}{\odstavec{\textwidth}{\bf \nazevcz}} \\[1em]
 	%{\em Autor:} & \autor \\%[1em]
 %  {\em Studijní program:} & \program \\
 	%{\em Předmět:} & \obor \\
@@ -250,8 +245,8 @@ V \kde\ dne .................... &........................................ \\	% 
 	\\
   {\em Klíčová slova:} & \odstavec{\delka}{\klicova} \\[2em]
 
-  {\em Title:} & ~\\
-	\multicolumn{2}{l}{\odstavec{\textwidth}{\bf \nazeven}}\\[1em]
+%  {\em Title:} & ~\\
+%	\multicolumn{2}{l}{\odstavec{\textwidth}{\bf \nazeven}}\\[1em]
 	%{\em Author:} & \autor \\[1em]
 	\multicolumn{2}{l}{\odstavec{\textwidth}{{\em Annotation:} ~ \abstrEN  }} \\[1em]
 	\\
@@ -314,6 +309,10 @@ V \kde\ dne .................... &........................................ \\	% 
 \bibliography{literatura}
 \inputencoding{utf8}
 
+%seznam obrázků
+\listoffigures
+%seznam tabulek
+\listoftables
 
 %%%%%%%%%%%% PŘÍLOHY PRÁCE %%%%%%%%%%%%
 \newpage % SEM NESAHEJTE!
