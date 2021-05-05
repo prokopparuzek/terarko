@@ -22,7 +22,7 @@ všechny připojené senzory, zavolá funkce, které je obsluhují, v případě
 s naměřenými hodnotami. Pro měření jsem se snažil co nejvíce využít možností, které poskytuje  \gls{knihovna} 
 \gls{periphio}, takže například data vracím ve formě struktury z této knihovny a používám ji pro získávání hodnot ze 
 dvou senzorů, pro třetí ji nepoužívám jen z toho důvodu, že ho zatím nepodporuje. Měření z BME280 je velmi jednoduché. 
-V podstatě otevřu sběrnici, přečtu data a vrátím je, vše za použití výše zmíněné knihovny. Z DS1820 to je velmi podobné, 
+V podstatě otevřu sběrnici, přečtu data a vrátím je, vše za použití výše zmíněné knihovny. Z DS18B20 to je velmi podobné, 
 jen nemohu použít \gls{periphio}, takže používám knihovnu, jež využívá modul kernelu, který zpřístupňuje tento senzor 
 přes virtuální souborový systém. Senzor DHT11 je na použití asi nejsložitější. Používám sice externí knihovnu, avšak ta 
 pro přístup ke GPIO využívá \gls{periphio}. Jinak je měření velmi obdobné jako u ostatních čidel, s tím rozdílem, že je 
