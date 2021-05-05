@@ -53,7 +53,7 @@
 %\newindex{default}{idx}{ind}{Rejstřík} % zavádí rejstřík v případě použití balíku index
 
 %slovníček
-\usepackage[toc, nopostdot]{glossaries}
+\usepackage[toc, nopostdot, acronym, automake]{glossaries}
 \makeglossaries
 \input{prace/text/slovnicek.tex}
 
@@ -63,9 +63,9 @@
 \addbibresource{literatura.bib}
 
 \frenchspacing % za větou bude mezislovní mezera (v anglických textech je mezera za větou delší)
-\widowpenalty=1000 % "síla" zákazu vdov (= jeden řádek ze začátku odstavce na konci stránky)
-\clubpenalty=1000 % "síla" zákazu sirotků (= jeden řádek/slovo z konce odstavce samostatně na začátku stránky)
-\brokenpenalty=1000 % "síla" zákazu zlomu stránky za řádkem, který má na konci rozdělené slovo
+\widowpenalty=10000 % "síla" zákazu vdov (= jeden řádek ze začátku odstavce na konci stránky)
+\clubpenalty=10000 % "síla" zákazu sirotků (= jeden řádek/slovo z konce odstavce samostatně na začátku stránky)
+\brokenpenalty=10000 % "síla" zákazu zlomu stránky za řádkem, který má na konci rozdělené slovo
 
 \topmargin=-15mm      % horní okraj trochu menší
 \textwidth=150mm      % šířka textu na stránce
@@ -330,6 +330,9 @@ V \kde\ dne .................... &........................................ \\	% 
 
 % Slovníček pojmů
 \printglossary[title={Slovníček pojmů}]
+
+% Akronymy
+\printglossary[type=\acronymtype, title=Akronymy]
 
 %%%%%%%%%%%% PŘÍLOHY PRÁCE %%%%%%%%%%%%
 \newpage % SEM NESAHEJTE!

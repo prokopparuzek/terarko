@@ -6,32 +6,27 @@ překladač implicitně \glslink{linkovani}{linkuje} staticky.
 % koncepce programu
 Obecná koncepce programu je asi takováto. Budu sledovat běh funkce main, kterou jsem se snažil co nejvíce vyčistit.
 \lstinputlisting[language=go,breaklines=true]{src/measure.go}
-Na začátku importuji pár knihoven, ve funkci main, jako první nastavím balíček logrus, který mi zajišťuje logování, 
-nastavuji co chci logovat, kam a jak to má zformátovat. Poté otevřu spojení na server, inicializuji knihovnu na použití 
-periferií a nastavím cron, aby mi spustil měření každých 15 minut. Nakonec je takový trik, jehož jediným účelem je, aby 
-hlavní gorutina neskončila, jedná se o čtení z kanálu do kterého, však nikdy nic nezapíši. A jelikož jde o blokující 
-operaci, program nikdy neskončí.
-
-% logování
-Na začátku jsem psal o logování, rád bych ho popsal trochu detailněji. Používám balíček logrus což je taková rozšířená 
-verze balíčku log ze standardní knihovny. Umožňuje mi detailně logovat běh programu a strukturovat logy, například tím, 
-že ke každé zprávě kterou vypíši, mi doplní důležité informace, jako z jaké funkce byl zavolán, na jakém řádku, nebo čas 
-kdy byl zavolán. Toto se dá libovolně měnit. A navíc díky němu mohu nechat ladící hlášky v programu celou dobu, jenom na 
-začátku v inicializaci mu řeknu, že mě zajímají pouze chyby a on mi hlášky s nižší prioritou, tj. debugovací informace 
-a podobně nebude vypisovat. Takže po nasazení, si jen zvolím soubor, kam má logy ukládat, abych o ně nepřišel a prioritu 
-co má vypisovat, a pak můžu jen sledovat chyby.
+Na začátku importuji pár \glslink{knihovna}{knihoven}, konkrétně používám části standardní \glslink{knihovna}{knihovny} 
+pro práci s časem a operačním systémem, \glslink{knihovna}{knihovnu} pro práci s periferiemi a dále to jsou 
+\glslink{knihovna}{knihovny} pro spojení s bránou, umožnění automatického spouštění programů v daný čas a logování. Ve 
+funkci main, jako první nastavím \glslink{knihovna}{knihovnu}logrus, který mi zajišťuje logování, nastavuji co chci 
+logovat, kam to má zapsat a jak to má zformátovat. Poté otevřu spojení s bránou, inicializuji 
+\glslink{knihovna}{knihovnu} na použití periferií a nastavím cron, aby mi spustil měření každých 15 minut. Nakonec je 
+takový trik, jehož jediným účelem je, aby hlavní gorutina neskončila, jedná se o čtení z kanálu do kterého, však nikdy 
+nic nezapíši. A jelikož jde o blokující operaci, program nikdy neskončí.
 
 % měření
+\paragraph*{Měření}
 Samotné získávání dat je velmi jednoduché. Každých 15 minut se zavolá funkce getMeasure(),která postupně projde přes 
 všechny připojené senzory, zavolá funkce, které je obsluhují, v případě chyby je zkouší zavolat vícekrát a vrátí pole 
-s naměřenými hodnotami. Pro měření jsem se snažil co nejvíce využít možností, které poskytuje knihovna periph.io, takže 
-například data vracím ve formě struktury z této knihovny a používám ji pro získávání hodnot ze dvou senzorů, pro třetí 
-ji nepoužívám jen z toho důvodu, že ho zatím nepodporuje. Měření z BME280 je velmi jednoduché. V podstatě otevřu 
-sběrnici, přečtu data a vrátím je, vše za použití výše zmíněné knihovny. Z DS1820 to je velmi podobné, jen nemohu použít 
-periph.io, takže používám knihovnu, jež využívá modul kernelu, který zpřístupňuje tento senzor přes virtuální souborový 
-systém. Senzor DHT11 je na použití asi nejsložitější. Používám sice externí knihovnu, avšak ta pro přístup ke GPIO 
-využívá periph.io. Jinak je měření velmi obdobné jako u ostatních čidel, s tím rozdílem, že je velmi chybové, takže se 
-musí vícekrát opakovat.
+s naměřenými hodnotami. Pro měření jsem se snažil co nejvíce využít možností, které poskytuje  \gls{knihovna} 
+\gls{periphio}, takže například data vracím ve formě struktury z této knihovny a používám ji pro získávání hodnot ze 
+dvou senzorů, pro třetí ji nepoužívám jen z toho důvodu, že ho zatím nepodporuje. Měření z BME280 je velmi jednoduché. 
+V podstatě otevřu sběrnici, přečtu data a vrátím je, vše za použití výše zmíněné knihovny. Z DS1820 to je velmi podobné, 
+jen nemohu použít \gls{periphio}, takže používám knihovnu, jež využívá modul kernelu, který zpřístupňuje tento senzor 
+přes virtuální souborový systém. Senzor DHT11 je na použití asi nejsložitější. Používám sice externí knihovnu, avšak ta 
+pro přístup ke GPIO využívá \gls{periphio}. Jinak je měření velmi obdobné jako u ostatních čidel, s tím rozdílem, že je 
+velmi chybové, takže se musí vícekrát opakovat.
 
 \paragraph*{DHT11}
 S tímto senzorem jsem měl asi největší problémy. Nejenom že jsem musel laborovat s nastavením verze api knihovny 
@@ -48,29 +43,25 @@ použitím správného typu čidla. Moje upravená verze kterou používám, je 
 \href{https://github.com/prokopparuzek/go-dht.git}{github.com/prokopparuzek/go-dht.git}
 
 % ukládání dat
-Pro ukládání dat na měřící stanici jsem nevymýšlel nic složitého. Vezmu jen data z každého senzoru, přidám timestamp, 
-počet milisekund od 1.1. 1970, tím se vyhnu problémům s reprezentací času a převody časových pásem a to vše přidám za 
-konec souboru konkrétního senzoru. Data ukládám ve formátu CSV, tedy oddělené čárkou. Jednotlivé hodnoty/sloupce nijak 
-neoznačuji, nechávám to na utilitách, jejichž cílem bude data obnovit, ty jediné s nimi takto budou pracovat a to jen 
-občas, takže to myslím nevadí, a navíc to zjednodušuje kód.
+\paragraph*{Ukládání}
+Pro ukládání dat na měřící stanici jsem nevymýšlel nic složitého. Vezmu jen data z každého senzoru, přidám 
+\gls{timestamp}, tím se vyhnu problémům s reprezentací času a převody časových pásem a to vše přidám za konec souboru 
+konkrétního senzoru. Data ukládám ve formátu \acrshort{csv}. Jednotlivé hodnoty/sloupce nijak neoznačuji, nechávám to na 
+utilitách, jejichž cílem bude data obnovit, ty jediné s nimi takto budou pracovat a to jen občas, takže to myslím 
+nevadí, a navíc to zjednodušuje kód.
 
-\paragraph*{NATS}
-Zde bych rád zmínil něco o message brokeru NATS, který používám. Prvně co to vlastně znamená ten message broker? Jedná 
-se o server zajišťující komunikaci, obvykle se používá právě v IoT nebo třeba v distribuovaných systémech. Funguje na 
-principu tzv. témat asi takto, já mu pošlu zprávu s určitým tématem (názvem), obsahující zrovna třeba naměřené teploty 
-a on ji přepošle všem, kdo jsou přihlášeni k odběru zpráv daného tématu. Může se stát, že se jednotlivé části v různých 
-programech jmenují jinak, ale princip je stejný. Toto je takzvaná Publish-Subscribe strategie, její vlastnost však je, 
-že server zprávu pošle a pak ji zahodí, takže pokud někomu nepřijde, třeba z důvodu výpadku proudu\ldots tak už ji nikdy 
-nedostane. Někomu to může vadit, takže pak vznikají nadstavby, kdy server zprávu uloží a zkouší ji poslat, dokud od 
-klienta neobdrží potvrzení o přijetí, to je mnohem robustnější řešení,a proto ho použiji i já, konkrétně použiji 
-nadstavbu nad serverem NATS nazývanou NATS-streaming. Stejně jako NATS se jedná o lehkou aplikaci napsanou v go, takže 
-zabírá minimum zdrojů. Já jsem ji vybral z důvodu jednoduchosti, dostupnosti široké škály klientských knihoven a též již 
+\paragraph*{Message broker}
+Jako základní \gls{message-broker} by se dal použít server NATS. Já použiji trochu bezpečnější variantu, konkrétně 
+použiji nadstavbu nazývanou NATS-streaming. Stejně jako NATS se jedná o lehkou aplikaci napsanou v go, takže zabírá 
+minimum zdrojů. Já jsem ji vybral z důvodu jednoduchosti, dostupnosti široké škály klientských knihoven a též již 
 zmiňované lehkosti. A taky proto že mám rád go.
 
 % odesílání
+\paragraph*{Odesílání}
 Odesílání dat začíná vlastně už na úplném začátku, kdy se spojím se serverem a pak až do konce držím spojení otevřené. 
-Samotné odeslání dat do message brokera, se vlastně moc neliší od uložení. Taky vezmu data, přidám timestamp a pošlu je. 
-Je tu však pár rozdílů. Data posílám ve formátu JSON, který je jednoduchý a čitelný. Z důvodu možných latencí, 
-nedostupnosti sítě\ldots odesílám každou zprávu v samostatné gorutině, abych neblokoval další měření, jelikož když se 
-zprávu nepovede odeslat, tak ji zkouším poslat po minutě další zhruba dvě hodiny. No a to je vše po odeslání zprávy už 
-nemusím nic řešit, poněvadž server si ji uloží a pošle dál, takže už se neztratí.
+Samotné odeslání dat do \glslink{message-broker}{message brokera}, se vlastně moc neliší od uložení. Taky vezmu data, 
+přidám \gls{timestamp} a pošlu je. Je tu však pár rozdílů. Data posílám ve formátu \gls{JSON}, který je jednoduchý 
+a čitelný. Z důvodu možných latencí, nedostupnosti sítě\ldots odesílám každou zprávu v samostatné 
+\glslink{gorutina}{gorutině}, abych neblokoval další měření, jelikož když se zprávu nepovede odeslat, tak ji zkouším 
+poslat po minutě další zhruba dvě hodiny. No a to je vše po odeslání zprávy už nemusím nic řešit, poněvadž server si ji 
+uloží a pošle dál, takže už se neztratí.

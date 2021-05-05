@@ -1,3 +1,4 @@
+% slovník
 \newglossaryentry{go}
 {
   name={Go},
@@ -27,3 +28,72 @@ procesoru pro sebe, takže pak program běží pomaleji.}
 dva typy dynamické, kdy se knihovny připojují až za běhu a jsou společné pro všechny programy běžící na daném počítači 
 a statické, kdy jsou všechny knihovny přibaleny k výslednému spustitelnému souboru.}
 }
+\newglossaryentry{knihovna}
+{
+  name={knihovna},
+  description={Soubor funkcí, tříd, či konstant, které jsou využívány více programy.}
+}
+\newglossaryentry{logrus}
+{
+  name={logrus},
+  description={Logrus je taková rozšířená verze \glslink{knihovna}{knihovny} log, ze standartu jazyka. Umožňuje mi 
+detailně logovat běh programu a strukturovat logy, například tím, že ke každé zprávě kterou vypíši, mi doplní důležité 
+informace, jako z jaké funkce byl zavolán, na jakém řádku, nebo čas kdy byl zavolán. Toto se dá libovolně měnit. A navíc 
+díky němu mohu nechat ladící hlášky v programu celou dobu, jenom na začátku v inicializaci mu řeknu, že mě zajímají 
+pouze chyby a on mi hlášky s nižší prioritou, tj. debugovací informace a podobně nebude vypisovat. Takže po nasazení, si 
+jen zvolím soubor, kam má logy ukládat, abych o ně nepřišel a prioritu co má vypisovat, a pak můžu jen sledovat chyby.}
+}
+\newglossaryentry{periphio}
+{
+  name={periph.io},
+  description={Knihovna pro jazyk \gls{go}, která se snaží zapouzdřit komunikaci po \acrshort{gpio} a poskytuje rozhraní 
+pro oblíbené senzory, aby jejich použití bylo co nejjednodušší.}
+}
+\newglossaryentry{timestamp}
+{
+  name={timestamp},
+  description={Počet sekund/něco s větší přesností od 1.1. 1970}
+}
+\newglossaryentry{brana}
+{
+  name={brána},
+  description={Centrální bod, kam senzory s celé domácnosti odesílají data. Zde by se rozhoduje co s nimi a případně se 
+  posílají dál. Případné akční prvky (například žárovka) by braly informace odtud.}
+}
+\newglossaryentry{ssl}
+{
+  name={SSL},
+  description={Protokol vytvářející šifrovanou cestu mezi transportní a aplikační vrstvou. Dnes se místo něj používá 
+protokol TLS, avšak stále se používá označení SSL.}
+}
+\newglossaryentry{certifikat}
+{
+  name={certifikát},
+  description={Digitálně podepsaný veřejný šifrovací klíč, kterým někdo nebo něco dokazuje, že je tím za koho se 
+vydává.}
+}
+\newglossaryentry{message-broker}
+{
+  name={message broker},
+  description={Server zajišťující komunikaci, obvykle se používá právě v IoT nebo třeba v distribuovaných systémech. 
+Funguje na principu tzv. témat asi takto, já mu pošlu zprávu s určitým tématem (názvem), obsahující zrovna třeba 
+naměřené teploty a on ji přepošle všem, kdo jsou přihlášeni k odběru zpráv daného tématu. Může se stát, že se jednotlivé 
+části v různých programech jmenují jinak, ale princip je stejný. Toto je takzvaná Publish-Subscribe strategie, její 
+vlastnost však je, že server zprávu pošle a pak ji zahodí, takže pokud někomu nepřijde, třeba z důvodu výpadku 
+proudu\ldots tak už ji nikdy nedostane. Někomu to může vadit, takže pak vznikají nadstavby, kdy server zprávu uloží 
+a zkouší ji poslat, dokud od klienta neobdrží potvrzení o přijetí, to je mnohem robustnější řešení.}
+}
+\newglossaryentry{JSON}
+{
+  name={JSON},
+  description={Datový formát založený na syntaxi javascriptu, oblíbený zejména ve webových aplikacích.}
+}
+\newglossaryentry{gorutina}
+{
+  name={gorutina},
+  description={Odlehčené vlákno}
+}
+
+% akronymy
+\newacronym{gpio}{GPIO}{general purpose input/output}
+\newacronym{csv}{CSV}{comma separated values}

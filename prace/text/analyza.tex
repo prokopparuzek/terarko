@@ -23,15 +23,14 @@ Teď se dostávám k samotnému data flow, tedy jak a kam mi potečou data co na
 a pošle je do obslužného počítače, to může být v podstatě cokoli se schopností ovládat senzor,ukládat data a schopností 
 poslat data přes wifi. Ten data zaloguje na perzistentní úložiště a pošle je na centrální bránu pomocí wifi sítě, což mi 
 přijde nejednoduší, nemusím nikde tahat kabely, či řešit jiné bezdrátové technologie, poněvadž wifi síť má v místě 
-měření dostatečné pokrytí. Teď se dostávám k takovému kontroverznímu prvku celého flow, a tím je centrální brána. To je 
-v podstatě počítač, který jediný co dělá je přeposílání dat ze senzorů někam jinam, dal by se tedy úplně odstranit s tím 
-že měřící stanice by data odesílala přímo do internetu, ale já ji zahrnul z těchto důvodů. Díky tomu, že s internetem 
-komunikuje pouze jedna stanice nemusím na ostatních řešit jejich autentizaci vůči cloudu, či různé SSL certifikáty 
-a podobně. To mi umožní na jejich místech mohu nasadit mnohem jednoduší zařízení. Dále mi to umožní přístup k datům doma 
-i bez internetu, kdybych si je chtěl nějak zobrazit... A Také to zjednoduší ladění celého systému, kdy například 
-programy mohu testovat u sebe na počítači kdy data budu brát z centrální brány a nebudu muset vůbec zasahovat do kódu 
-v senzoru. No a to je celé z brány pošlu data do cloudu a tam jejich cesta končí, pokud tedy vynechám cestu z cloudu za 
-účelem jejich zobrazení.
+měření dostatečné pokrytí. Teď se dostávám k takovému kontroverznímu prvku celého flow, a tím je centrální \gls{brana}. 
+Dala by se tedy úplně odstranit s tím že měřící stanice by data odesílala přímo do internetu, ale já ji zahrnul z těchto 
+důvodů. Díky tomu, že s internetem komunikuje pouze jedna stanice nemusím na ostatních řešit jejich autentizaci vůči 
+cloudu, či různé \gls{ssl} \glslink{certifikat}{certifikáty} a podobně. To mi umožní na jejich místech mohu nasadit 
+mnohem jednoduší zařízení. Dále mi to umožní přístup k datům doma i bez internetu, kdybych si je chtěl nějak zobrazit... 
+A Také to zjednoduší ladění celého systému, kdy například programy mohu testovat u sebe na počítači kdy data budu brát 
+z centrální brány a nebudu muset vůbec zasahovat do kódu v senzoru. No a to je celé z brány pošlu data do cloudu a tam 
+jejich cesta končí, pokud tedy vynechám cestu z cloudu za účelem jejich zobrazení.
 \begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{dataFlow.png}
