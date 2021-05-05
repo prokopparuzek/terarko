@@ -1,8 +1,14 @@
 % úvod
-Konečně se dostáváme k něčemu reálnému. Zde popíši hardwarovou část řešení tj. Co vlastně bude měřit, čím budu 
-měřit\ldots
+%Konečně se dostáváme k něčemu reálnému. Zde popíši hardwarovou část řešení tj. Co vlastně bude měřit, čím budu 
+%měřit\ldots
 
 % měřící stanice
+\section{Měřící stanice}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{RPi2.jpg}
+    \caption{Raspberry pi 2}
+\end{figure}
 Možných základů pro měřící stanici, jednodeskových počítačů, je dnes na trhu mnoho od různých osmibitů, až po počítače 
 na architektuře ARM,  které dosahují výkonu srovnatelného s mobilními telefony. Já jsem pro mé řešení zvolil Raspberry 
 Pi ve verzi 2 a to z několika důvodů. Jednak ho mám k dispozici a dále mi nabízí běžící Linux a tudíž za mne řeší 
@@ -17,51 +23,98 @@ nebude to pravé ořechové. Avšak v případě zmíněných problémů mi zvol
 základ stanice na něco vhodnějšího, za předpokladu, že se zvolená deska zvládne připojit na lokální síť. Například mohu 
 použít oblíbenou desku ESP8266 či ESP32, které se cenově pohybují v řádu stokorun, pinů mají dostatek, disponují Wifi 
 čipem a umožňují použití nízko odběrových módů při běhu na baterii.
-\begin{figure}[H]
-		\centering
-    \includegraphics[width=\textwidth]{RPi2.jpg}
-    \caption{Měřící stanice}
-\end{figure}
 
 % senzory
+\section{Senzory}
 % BME280
-A teď součást bez které by zbytek byl k ničemu, samotné senzory. Pro měření v samotném teráriu jsem zvolil BME280. Jedná 
-se o senzor od firmy Bosh pro měření teploty, vlhkosti a atmosférického tlaku, vzhledem k tomu, že se dodává pouze v SMD 
-variantě, jsem zvolil modul, který obsahuje tento senzor, potřebné součástky kolem a má vyvedenou I2C sběrnici, pro 
-snadné připojení k řídící desce. Dal by se též použít libovolný jiný senzor obdobných parametrů, ale tento má příjemnou 
-cenu a velmi dobrou přesnost měření, a navíc se díky I2C snadno propojí se zbytkem systému.
+\subsection{BME280}
+Pro měření hodnot v teráriu jsem zvolil senzor BME280 od firmy Bosh s cenovkou kolem 100 Kč. Navíc díky sběrnici I2C mi 
+z terária vedou pouze čtyři dráty.
 \begin{figure}[H]
 		\centering
-    \includegraphics[angle=270,width=0.6\textwidth]{BME280.jpg}
+    \includegraphics[angle=270,width=0.5\textwidth]{BME280.jpg}
     \caption{Modul s BME280, stříbrný čtvereček uprostřed}
 \end{figure}
 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|c|}
+        \hline
+        \multicolumn{2}{|c|}{Teplota} \\ \hline
+        \hline
+        Rozsah & -40 až +85\textdegree C \\ \hline
+        Rozlišení & 0,01\textdegree C \\ \hline
+        Přesnost & $\pm$ 1\textdegree C \\ \hline
+        \hline
+        \multicolumn{2}{|c|}{Vlhkost} \\ \hline
+        \hline
+        Rozsah & 0 až 100\% \\ \hline
+        Rozlišení & 0,008\% \\ \hline
+        Přesnost & $\pm$2\% \\ \hline
+        \hline
+        \multicolumn{2}{|c|}{Tlak} \\ \hline
+        \hline
+        Rozsah & 300 až 1100 hPa \\ \hline
+        Rozlišení & 0,18 Pa \\ \hline
+        Přesnost & 1 $\pm$ Pa \\ \hline
+    \end{tabular}
+    \caption{Parametry BME280}
+\end{table}
+
 % DS1820
+\subsection{DS1820}
 Za účelem případné další analýzy, jsem umístil pár senzorů i mimo terárium, abych mohl sledovat závislost teploty vně 
-a uvnitř. Tady už nejde tolik o přesnost, takže jsem použil senzory co jsem našel doma. Na měření teploty jsem použil 
-senzor od firmy DS1820. Jde o jednoduché a levné čidlo, moje je v pouzdru TO-92, to se používá třeba taky pro 
-tranzistory, OneWire sběrnicí, speciální sběrnice od firmy Dallas, která potřebuje pouze tři dráty a umožňuje i použití 
-pouze dvou a digitálním měřením teploty s přesností 0.5 \textdegree C.
+a uvnitř.Jako hlavní senzor teploty jsem použil DS1820 s cenou čínské kopie asi 35 Kč.
 \begin{figure}[H]
-		\centering
-    \includegraphics[angle=270,width=0.6\textwidth]{DS1820.jpg}
+    \centering
+    \includegraphics[angle=270,width=0.5\textwidth]{DS1820.jpg}
     \caption{DS1820}
 \end{figure}
 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|c|}
+        \hline
+        \multicolumn{2}{|c|}{Teplota} \\ \hline
+        \hline
+        Rozsah & -55 až +125\textdegree C \\ \hline
+        Rozlišení & 0,0625\textdegree C \\ \hline
+        Přesnost & $\pm$ 0,5\textdegree C \\ \hline
+    \end{tabular}
+    \caption{Parametry DS1820}
+\end{table}
+
 % DHT11
-A jako poslední jsem použil oblíbené čidlo teploty a vlhkosti DHT11. Jde o čínský výrobek v modré krabičce se čtyřmi 
-vývody, z nichž jeden je neaktivní. Čidlo používá vlastní sběrnici, které však též stačí tři dráty, jako výše zmíněné 
-OneWire. Senzor teploty jsem zdvojit, poněvadž toto čidlo je velmi levné a bohužel též nepřesné, rozlišení 1 \textdegree C při 
-možné odchylce až 2 \textdegree C, není úplně ideální, proto jsem ho doplnil výše zmíněným teploměrem. U vlhkosti je to podobné, 
-ale vzhledem k tomu, že se jednak hůře ovlivňuje a také se pohybuje ve větším intervalu než teplota mi odchylka 5 \% zas 
-tolik nevadí.
-\begin{figure}[H]
-		\centering
-    \includegraphics[angle=270,width=0.6\textwidth]{DHT11.jpg}
+\subsection{DHT11}
+Pro měření vlhkosti vně terária jsem použil oblíbený senzor teploty a vlhkosti DHT11. Senzor teploty jsem zdvojil 
+z důvodu velké nepřesnosti tohoto modelu.
+\begin{figure}[hbt]
+    \centering
+    \includegraphics[angle=270,width=0.5\textwidth]{DHT11.jpg}
     \caption{DHT11}
 \end{figure}
 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|c|}
+        \hline
+        \multicolumn{2}{|c|}{Teplota} \\ \hline
+        \hline
+        Rozsah & 0 až +50\textdegree C \\ \hline
+        Rozlišení & 1\textdegree C \\ \hline
+        Přesnost & $\pm$ 2\textdegree C \\ \hline
+        \hline
+        \multicolumn{2}{|c|}{Vlhkost} \\ \hline
+        \hline
+        Rozsah & 20 až 90\% \\ \hline
+        Rozlišení & 1\% \\ \hline
+        Přesnost & $\pm$5\% \\ \hline
+    \end{tabular}
+    \caption{Parametry DHT11}
+\end{table}
+
 % gateway
+\section{Brána}
 Jako brána pro komunikaci s internetem se dá taky použit téměř cokoli, ale přeci jen jsou na ní kladeny větší nároky než 
 na měřící stanici. Mimo nutnosti možnosti připojení do sítě je též třeba výpočetní výkon a paměť, dostatečná na 
 komunikaci s cloudem, řešení šifrování, běh nějakého message brokera\ldots, tedy nejlépe nějakou desku s operačním 

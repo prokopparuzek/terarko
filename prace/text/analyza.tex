@@ -1,6 +1,6 @@
 % úvod
-Zde bych rád rozebral jak budu jednotlivé požadavky řešit. Nastínil jak bude celkové řešení vypadat, strukturu\ldots Též 
-bych zde rád představil kde vlastně budu měřit a zpracovávat data.
+%Zde bych rád rozebral jak budu jednotlivé požadavky řešit. Nastínil jak bude celkové řešení vypadat, strukturu\ldots 
+%Též bych zde rád představil kde vlastně budu měřit a zpracovávat data.
 
 % měření
 Ohledně měření bych zatím zmínil jen frekvence o které myslím myslím, že pro mé účely bude stačit měřit jednou za čtvrt 
@@ -13,10 +13,10 @@ příliš často, ale já bych to tak nechal z důvodu zjemnění denních graf�
 Co se týče uložení dat, abych zajistil stoprocentní jistotu, že se data uloží, budu je ukládat přímo v místě měření, tím 
 myslím, že počítač, který bude mít na starosti měřit, bude zároveň naměřená data hned ukládat na SD kartu, nebo tak 
 někam. Bude to takový log měření, který mi umožní obnovit data nezapsaná do cloudu z důvodu nějaké chyby, případně mi 
-umožní zjišťovat kde vlastně chyba nastala, a může pomoci i s řešením. Dále myslím, že data bude stačit ukládat klidně 
-pouze na jedno místo v cloudu, poněvadž ten sám o sobě pokud je kvalitní je výborně zálohovaný, pokud o data v něm 
-nějakým nedopatřením přijdu, nějak mě to neovlivní, bude to škoda, avšak závažné důsledky to mít nebude a navíc tím, že 
-nebudu řešit zálohy a rozkopírovávání dat, či jejich konzistenci na různých místech se celé řešení výrazně zjednoduší.
+umožní zjišťovat kde vlastně chyba nastala, a může pomoci i s řešením.% Dále myslím, že data bude stačit ukládat klidně 
+%pouze na jedno místo v cloudu, poněvadž ten sám o sobě pokud je kvalitní je výborně zálohovaný, pokud o data v něm 
+%nějakým nedopatřením přijdu, nějak mě to neovlivní, bude to škoda, avšak závažné důsledky to mít nebude a navíc tím, že 
+%nebudu řešit zálohy a rozkopírovávání dat, či jejich konzistenci na různých místech se celé řešení výrazně zjednoduší.
 
 % data flow
 Teď se dostávám k samotnému data flow, tedy jak a kam mi potečou data co naměřím. Začnu u senzoru, ten změří data 
@@ -32,7 +32,7 @@ i bez internetu, kdybych si je chtěl nějak zobrazit... A Také to zjednoduší
 programy mohu testovat u sebe na počítači kdy data budu brát z centrální brány a nebudu muset vůbec zasahovat do kódu 
 v senzoru. No a to je celé z brány pošlu data do cloudu a tam jejich cesta končí, pokud tedy vynechám cestu z cloudu za 
 účelem jejich zobrazení.
-\begin{figure}[h]
+\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{dataFlow.png}
 		\caption{Takto přibližně potečou data}
@@ -49,5 +49,5 @@ je po nasbírání zkušeností doplním.
 
 % bezpečnost
 Co se otázky bezpečnosti týče, tak vynechám šifrování na cestě od senzoru do brány, zejména z důvodu jednoduššího ladění 
-a implementace, avšak co na této cestě doplním je elektronický podpis zprávy, aby se mi nikdo nefušoval do komunikace. 
+a implementace, avšak co na této cestě doplním je elektronický podpis zprávy, aby se mi nikdo nepodvrhoval komunikaci. 
 Zabezpečení komunikace s cloudem už budu řešit prostředky té dané služby i co se zobrazení hodnot týče.

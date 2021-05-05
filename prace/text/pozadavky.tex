@@ -1,8 +1,8 @@
 % úvod
-Na celé řešení mám několik požadavků, které postupně detailně popíši tak, aby bylo vše jasné. Poněvadž není nic horšího 
-než nepřesné, či nejasné zadání, protože se pak výsledek špatně hodnotí a celkově upřesňování zadání v průběhu řešení je 
-cesta do pekel. Tyto požadavky jsou nutné, pokud vytvořené řešení bude mít funkce navíc, nevadí to, ale nesmí ovlivňovat 
-tyto zadané parametry.
+%Na celé řešení mám několik požadavků, které postupně detailně popíši tak, aby bylo vše jasné. Poněvadž není nic horšího 
+%než nepřesné, či nejasné zadání, protože se pak výsledek špatně hodnotí a celkově upřesňování zadání v průběhu řešení 
+%je cesta do pekel. Tyto požadavky jsou nutné, pokud vytvořené řešení bude mít funkce navíc, nevadí to, ale nesmí 
+%ovlivňovat tyto zadané parametry.
 
 % měření
 První požadavek se bude týkat měření. Měřit chci teplotu a vlhkost v teráriu, když bude zvolený hardware umět i něco 
@@ -13,8 +13,8 @@ trendy, ale nepotřebuji data z každé minuty.
 Další z požadavků je na ukládání dat. Když už je změřím, tak je chci mít vždy uložená, tedy i při výpadku internetu 
 a podobně. Při výpadku proudu nic nezměřím, takže to není třeba řešit. Co se týče vzdáleného ukládání, nepovažuji za 
 důležité, aby se všechna data propsala do cloudu, tedy i v případě nějakého výpadku se odeslala data co jsem změřil, ale 
-neodeslal. Když přijdu o jedno měření během krátkého výpadku, je mi to jedno a při větším nebo nějaké chybě si toho 
-všimnu a stejně to bude třeba opravit.
+neodeslal. Když přijdu o jedno měření během krátkého výpadku, je mi to jedno.% a při větším nebo nějaké chybě si toho 
+%všimnu a stejně to bude třeba opravit.
 
 % analýza dat
 Data mám uložena, co s nimi budu dělat? No tak v podstatě bych nemusel dělat nic, pouze si je zobrazit, což je to co 
@@ -36,13 +36,13 @@ neobsahuje ovládání čehosi, není to úplně nezbytné. Případný útočn�
 nebo by se mohl teoreticky vydávat za teploměr a kazit mi data. To by mohl být problém, takže pokud nevyžaduji 
 šifrování, ověření toho kdo posílá data požaduji určitě. Zabezpečení však považuji za důležité u samotné webové stránky, 
 která bude vystavena veřejně. Ne že by mi vadilo, že někdo sleduje jak se mají mé kytičky, ale mohlo by se z toho dát 
-odvodit, že je nezalévám tj. jsem pryč a v bytě nikdo není. Pokud si někdo dá tu práci, že mi napíchne připojení, nebo 
-přijede a odposlechne data z domácí sítě, tak má asi i možnosti jak si to, že nejsem doma zjistit jinak. Rozhodně to ale 
-bude složitější než otevření webové stránky.
+odvodit, že je nezalévám tj. jsem pryč a v bytě nikdo není.% Pokud si někdo dá tu práci, že mi napíchne připojení, nebo 
+%přijede a odposlechne data z domácí sítě, tak má asi i možnosti jak si to, že nejsem doma zjistit jinak. Rozhodně to 
+%ale bude složitější než otevření webové stránky.
 
 % cena
-Pak tu mám poslední z požadavků a tím je cena. Nejraději bych ho neřešil, ale žijeme ve světě kde je tento požadavek 
-velmi důležitý. Takže asi jediné cenové omezení je, abych si to mohl dovolit. Tady bych zopakoval, že cenu budu částečně 
-upřednostňovat před ostatními požadavky. Zejména v případech, kdy mám nějaký hardware doma, i když ne úplně vhodný, ale 
-dostačující. Tak ho upřednostním před vhodnějším, který nemám a musel bych ho draze shánět. Otázku ceny budu podrobněji 
-řešit u výběru hardwaru.
+%Pak tu mám poslední z požadavků a tím je cena. Nejraději bych ho neřešil, ale žijeme ve světě kde je tento požadavek 
+%velmi důležitý. Takže asi jediné cenové omezení je, abych si to mohl dovolit. Tady bych zopakoval, že cenu budu 
+%částečně upřednostňovat před ostatními požadavky. Zejména v případech, kdy mám nějaký hardware doma, i když ne úplně 
+%vhodný, ale dostačující. Tak ho upřednostním před vhodnějším, který nemám a musel bych ho draze shánět. Otázku ceny 
+%budu podrobněji řešit u výběru hardwaru.
