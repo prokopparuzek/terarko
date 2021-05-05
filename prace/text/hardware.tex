@@ -28,8 +28,9 @@ použít oblíbenou desku ESP8266 či ESP32, které se cenově pohybují v řád
 \section{Senzory}
 % BME280
 \subsection{BME280}
-Pro měření hodnot v teráriu jsem zvolil senzor BME280 od firmy Bosh s cenovkou kolem 100 Kč. Navíc díky sběrnici I2C mi 
-z terária vedou pouze čtyři dráty.
+Pro měření hodnot v teráriu jsem zvolil senzor BME280 teploty vlhkosti a tlaku vzduchu od firmy Bosh s cenovkou kolem 
+100 Kč. Navíc díky sběrnici \gls{I2C} mi z terária vedou pouze čtyři dráty.
+
 \begin{figure}[H]
 		\centering
     \includegraphics[angle=270,width=0.5\textwidth]{BME280.jpg}
@@ -64,7 +65,10 @@ z terária vedou pouze čtyři dráty.
 % DS1820
 \subsection{DS1820}
 Za účelem případné další analýzy, jsem umístil pár senzorů i mimo terárium, abych mohl sledovat závislost teploty vně 
-a uvnitř.Jako hlavní senzor teploty jsem použil DS1820 s cenou čínské kopie asi 35 Kč.
+a uvnitř.Jako hlavní senzor teploty jsem použil DS1820 vyvinutý firmou Dallas s cenou čínské kopie asi 35 Kč. Jde o můj 
+oblíbený senzor, poněvadž je přesný, snadno použitelný a díky sběrnici \gls{onewire} mu stačí pouze tři, případě dva 
+dráty.
+
 \begin{figure}[H]
     \centering
     \includegraphics[angle=270,width=0.5\textwidth]{DS1820.jpg}
@@ -86,8 +90,10 @@ a uvnitř.Jako hlavní senzor teploty jsem použil DS1820 s cenou čínské kopi
 
 % DHT11
 \subsection{DHT11}
-Pro měření vlhkosti vně terária jsem použil oblíbený senzor teploty a vlhkosti DHT11. Senzor teploty jsem zdvojil 
-z důvodu velké nepřesnosti tohoto modelu.
+Pro měření vlhkosti vně terária jsem použil oblíbený senzor teploty a vlhkosti DHT11 s cenovkou kolem 40 Kč. Senzor 
+teploty jsem zdvojil z důvodu velké nepřesnosti tohoto modelu. S tímto senzorem jsem měl největší problémy, zejména díky 
+jeho nestandardní sběrnici, která připomíná \gls{onewire}, ale používá jiný komunikační protokol.
+
 \begin{figure}[hbt]
     \centering
     \includegraphics[angle=270,width=0.5\textwidth]{DHT11.jpg}

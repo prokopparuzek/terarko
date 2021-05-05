@@ -93,6 +93,19 @@ a zkouší ji poslat, dokud od klienta neobdrží potvrzení o přijetí, to je 
   name={gorutina},
   description={Odlehčené vlákno}
 }
+\newglossaryentry{I2C}
+{
+  name={I$^2$C},
+  description={Sériová sběrnice od firmy Philips, používaná pro připojení nízko rychlostních periferií. Používá čtyři 
+dráty: napětí, zem, hodiny a datový kabel.}
+}
+\newglossaryentry{onewire}
+{
+  name={OneWire},
+  description={Sériová sběrnice používaná výhradně firmou Dallas, pro připojení jejích produktů. Stačí jí pouze tři 
+dráty: napětí, zem a datový s tím, že lze odstranit napájecí kabel a senzor je poté napájen paraziticky s datového 
+kabelu.}
+}
 
 % akronymy
 \newacronym{gpio}{GPIO}{general purpose input/output}
