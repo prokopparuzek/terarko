@@ -25,3 +25,6 @@ src/
 *.lof
 *.lot
 *.xml
+*.acn
+*.acr
+*.alg

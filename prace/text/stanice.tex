@@ -6,10 +6,10 @@ překladač implicitně \glslink{linkovani}{linkuje} staticky.
 % koncepce programu
 Obecná koncepce programu je asi takováto. Budu sledovat běh funkce main, kterou jsem se snažil co nejvíce vyčistit.
 \lstinputlisting[language=go,breaklines=true]{src/measure.go}
-Na začátku importuji pár \glslink{knihovna}{knihoven}, konkrétně používám části standardní \glslink{knihovna}{knihovny} 
+Na začátku importuji šest \glslink{knihovna}{knihoven}, konkrétně používám části standardní \glslink{knihovna}{knihovny} 
 pro práci s časem a operačním systémem, \glslink{knihovna}{knihovnu} pro práci s periferiemi a dále to jsou 
 \glslink{knihovna}{knihovny} pro spojení s bránou, umožnění automatického spouštění programů v daný čas a logování. Ve 
-funkci main, jako první nastavím \glslink{knihovna}{knihovnu}logrus, který mi zajišťuje logování, nastavuji co chci 
+funkci main, jako první nastavím \glslink{knihovna}{knihovnu} logrus, který mi zajišťuje logování, nastavuji co chci 
 logovat, kam to má zapsat a jak to má zformátovat. Poté otevřu spojení s bránou, inicializuji 
 \glslink{knihovna}{knihovnu} na použití periferií a nastavím cron, aby mi spustil měření každých 15 minut. Nakonec je 
 takový trik, jehož jediným účelem je, aby hlavní gorutina neskončila, jedná se o čtení z kanálu do kterého, však nikdy 
@@ -33,13 +33,14 @@ S tímto senzorem jsem měl asi největší problémy. Nejenom že jsem musel la
 periph.io, ale i samotná knihovna pro obsluhu senzoru obsahovala chyby. Takže jsem ji důkladně prozkoumal a porovnal 
 s datasheetem k senzoru. Našel jsem dvě zásadní chyby. Jedna byla, že knihovna vyslal příliš krátký startovací pulz, 
 takže ani čidlo neprobudila, to se dalo vyřešit jednoduše, prostě jsem do programu přidal pauzu. A druhá, že špatně 
-zpracovávala data co z čidla četla. Zpracovávala je jako jedno velké šestnáctibitové číslo, ale v datasheetu jsem se 
-dočetl že tyto dva bajty představují číslo v desetinné čárce, ale velmi zvláštně. První bajt je celá část a druhý 
-desetinná a zároveň s tím se v datasheetu píše že rozlišovací schopnost senzoru je 1 \textdegree C a 5 \%, takže jsem 
-druhý bajt zahodil a dál pracoval pouze s tím prvním. A to fungovalo na jedničku. Tuto zvláštnost s rozlišením bych asi 
-vysvětlil tím, že komunikační protokol bude schodný i s dražšími senzory s lepším rozlišením a to možná souvisí 
-i s chybami v knihovně, poněvadž je určena i pro ně. Takže abych jejich podporu nerozbil jsem mé úpravy podmínil 
-použitím správného typu čidla. Moje upravená verze kterou používám, je k nalezení zde: 
+zpracovávala data co z čidla četla. Před úpravou mi vracela nereálné hodnoty teploty a vlhkosti, konkrétně vracela 
+chybu, že načtená data jsou mimo rozsah, protože hodnoty zpracovávala jako jedno velké šestnáctibitové číslo, ale 
+v datasheetu jsem se dočetl že tyto dva bajty představují číslo v desetinné čárce, ale velmi neobvykle. První bajt je 
+celá část a druhý desetinná a zároveň s tím se v datasheetu píše že rozlišovací schopnost senzoru je 
+1 \textdegree C a 1 \%, takže jsem druhý bajt zahodil a dál pracoval pouze s tím prvním. A to fungovalo na jedničku. 
+Tuto zvláštnost s rozlišením bych asi vysvětlil tím, že komunikační protokol bude schodný i s dražšími senzory s lepším 
+rozlišením a to možná souvisí i s chybami v knihovně, poněvadž je určena i pro ně. Takže abych jejich podporu nerozbil 
+jsem mé úpravy podmínil použitím správného typu čidla. Moje upravená verze kterou používám, je k nalezení zde: 
 \href{https://github.com/prokopparuzek/go-dht.git}{github.com/prokopparuzek/go-dht.git}
 
 % ukládání dat

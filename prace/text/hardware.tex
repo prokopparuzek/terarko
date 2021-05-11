@@ -18,11 +18,11 @@ systém a výrazně to zjednodušuje vývoj, poněvadž mohu nahrávat nové ver
 jejich běh, což je pro mě výhodné, neb terárium nemám v pokoji, kde programuji. Samozřejmě že toto řešení má i své 
 nevýhody. Například v případě, že bych chtěl měřit analogové hodnoty, bych musel dokupovat převodník z analogového 
 signálu na digitální, či v případě nutnosti rozšíření na více míst, by to nebylo ekonomicky výhodné, přeci jen Raspberry 
-Pi stojí kolem 1000 Kč. Nebo pokud bych chtěl zařízení napájet z akumulátoru, tak též s odběrem kolem půl ampéru to 
-nebude to pravé ořechové. Avšak v případě zmíněných problémů mi zvolené celkové řešení umožňuje poměrně komfortně změnit 
-základ stanice na něco vhodnějšího, za předpokladu, že se zvolená deska zvládne připojit na lokální síť. Například mohu 
-použít oblíbenou desku ESP8266 či ESP32, které se cenově pohybují v řádu stokorun, pinů mají dostatek, disponují Wifi 
-čipem a umožňují použití nízko odběrových módů při běhu na baterii.
+Pi stojí kolem 1000 Kč. Nebo pokud bych chtěl zařízení napájet z akumulátoru, tak s odběrem kolem půl ampéru by moc 
+dlouho nevydržel. Avšak v případě zmíněných problémů mi zvolené celkové řešení umožňuje poměrně komfortně změnit základ 
+stanice na něco vhodnějšího, za předpokladu, že se zvolená deska zvládne připojit na lokální síť. Například mohu použít 
+oblíbenou desku ESP8266 či ESP32, které se cenově pohybují v řádu stokorun, pinů mají dostatek, disponují Wifi čipem 
+a umožňují použití nízko odběrových módů při běhu na baterii.
 
 % senzory
 \section{Senzory}
@@ -72,7 +72,7 @@ dráty.
 \begin{figure}[H]
     \centering
     \includegraphics[angle=270,width=0.5\textwidth]{DS18B20.jpg}
-    \caption{DS18B20}
+    \caption{DS18B20, pouzdro TO-92}
 \end{figure}
 
 \begin{table}[H]
@@ -97,7 +97,7 @@ jeho nestandardní sběrnici, která připomíná \gls{onewire}, ale používá 
 \begin{figure}[hbt]
     \centering
     \includegraphics[angle=270,width=0.5\textwidth]{DHT11.jpg}
-    \caption{DHT11}
+    \caption{DHT11, modrý obdélníček}
 \end{figure}
 
 \begin{table}[H]
