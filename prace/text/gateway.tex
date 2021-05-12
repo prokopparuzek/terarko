@@ -19,6 +19,19 @@ přihlašování probíhá přes vygenerovaný soubor s privátním klíčem. So
 aplikace přístup a řekl jsem jí kde ho má hledat. O zbytek se postará Googlem poskytovaná \gls{knihovna}. To proběhne po 
 startu programu, a pak se vytvořené spojení používá až do konce. Poté už se jen přeposílají data.
 
+% krok 1
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{key1.png}
+    \caption{Vygenerování klíče, krok 1}
+\end{figure}
+% krok 2
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{key2.png}
+    \caption{Vygenerování klíče, krok 2}
+\end{figure}
+
 \paragraph*{Organizace dat}
 Pro každý senzor mám v databázi samostatnou kolekci, ve které je jedno měření představováno souborem, jenž obsahuje 
 naměřená data a \gls{timestamp}. Název souboru nechávám generovat firestore, pro mě je nepodstatný.
