@@ -10,7 +10,7 @@ Příjem probíhá tak, že se přihlásím k odběru kanálu, do kterého měř
 přijde spustím funkci, která ji pošle dál. Trochu nestandardní je přihlášení k odběru. Používám takzvanou \uv{durable 
 subscription}. Jedná se o funkci NATS streaming serveru, která mi umožňuje přihlásit se pod určitým jménem a server si 
 pak pamatuje, jakou poslední zprávu mi posílal, takže když dojde k výpadku, po opětovném připojení mi pošle všechny 
-zprávy, které jsem dosud nedostal.
+zprávy, které jsem dosud nedostal \parencite{root.cz:NATS-streaming}.
 
 % odesílání do cloudu
 Jediné co funkce zpracovávající naměřená data dělá, je přeposílání do cloudu. Celou komunikaci s cloudem jsem v podstatě 

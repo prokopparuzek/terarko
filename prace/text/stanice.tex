@@ -35,17 +35,17 @@ velmi chybové, takže se musí vícekrát opakovat.
 \paragraph*{DHT11}
 S tímto senzorem jsem měl asi největší problémy. Nejenom že jsem musel laborovat s nastavením verze api knihovny 
 periph.io, ale i samotná knihovna pro obsluhu senzoru obsahovala chyby. Takže jsem ji důkladně prozkoumal a porovnal 
-s datasheetem k senzoru. Našel jsem dvě zásadní chyby. Jedna byla, že knihovna vyslal příliš krátký startovací pulz, 
-takže ani čidlo neprobudila, to se dalo vyřešit jednoduše, prostě jsem do programu přidal pauzu. A druhá, že špatně 
-zpracovávala data co z čidla četla. Před úpravou mi vracela nereálné hodnoty teploty a vlhkosti, konkrétně vracela 
-chybu, že načtená data jsou mimo rozsah, protože hodnoty zpracovávala jako jedno velké šestnáctibitové číslo, ale 
-v datasheetu jsem se dočetl že tyto dva bajty představují číslo v desetinné čárce, ale velmi neobvykle. První bajt je 
-celá část a druhý desetinná a zároveň s tím se v datasheetu píše že rozlišovací schopnost senzoru je 
-1 \textdegree C a 1 \%, takže jsem druhý bajt zahodil a dál pracoval pouze s tím prvním. A to fungovalo na jedničku. 
-Tuto zvláštnost s rozlišením bych asi vysvětlil tím, že komunikační protokol bude schodný i s dražšími senzory s lepším 
-rozlišením a to možná souvisí i s chybami v knihovně, poněvadž je určena i pro ně. Takže abych jejich podporu nerozbil 
-jsem mé úpravy podmínil použitím správného typu čidla. Moje upravená verze kterou používám, je k nalezení zde: 
-\url{https://github.com/prokopparuzek/go-dht.git}.
+s datasheetem(\url{https://www.mouser.com/datasheet/2/758/DHT11-Technical-Data-Sheet-Translated-Version-1143054.pdf}) 
+k senzoru. Našel jsem dvě zásadní chyby. Jedna byla, že knihovna vyslal příliš krátký startovací pulz, takže ani čidlo 
+neprobudila, to se dalo vyřešit jednoduše, prostě jsem do programu přidal pauzu. A druhá, že špatně zpracovávala data co 
+z čidla četla. Před úpravou mi vracela nereálné hodnoty teploty a vlhkosti, konkrétně vracela chybu, že načtená data 
+jsou mimo rozsah, protože hodnoty zpracovávala jako jedno velké šestnáctibitové číslo, ale v datasheetu jsem se dočetl 
+že tyto dva bajty představují číslo v desetinné čárce, ale velmi neobvykle. První bajt je celá část a druhý desetinná 
+a zároveň s tím se v datasheetu píše že rozlišovací schopnost senzoru je 1 \textdegree C a 1 \%, takže jsem druhý bajt 
+zahodil a dál pracoval pouze s tím prvním. A to fungovalo na jedničku. Tuto zvláštnost s rozlišením bych asi vysvětlil 
+tím, že komunikační protokol bude schodný i s dražšími senzory s lepším rozlišením a to možná souvisí i s chybami 
+v knihovně, poněvadž je určena i pro ně. Takže abych jejich podporu nerozbil jsem mé úpravy podmínil použitím správného 
+typu čidla. Moje upravená verze kterou používám, je k nalezení zde: \url{https://github.com/prokopparuzek/go-dht.git}.
 
 % ukládání dat
 \paragraph*{Ukládání}
@@ -58,8 +58,8 @@ nevadí, a navíc to zjednodušuje kód.
 \paragraph*{Message broker}
 Jako základní \gls{message-broker} by se dal použít server NATS. Já použiji trochu bezpečnější variantu, konkrétně 
 použiji nadstavbu nazývanou NATS-streaming. Stejně jako NATS se jedná o lehkou aplikaci napsanou v go, takže zabírá 
-minimum zdrojů. Já jsem ji vybral z důvodu jednoduchosti, dostupnosti široké škály klientských knihoven a též již 
-zmiňované lehkosti. A taky proto že mám rád go.
+minimum zdrojů \parencite{root.cz:NATS-streaming}. Já jsem ji vybral z důvodu jednoduchosti, dostupnosti široké škály 
+klientských knihoven a též již zmiňované lehkosti. A taky proto že mám rád go.
 
 % odesílání
 \paragraph*{Odesílání}

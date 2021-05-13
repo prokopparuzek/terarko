@@ -10,29 +10,30 @@
     \caption{Raspberry pi 2}
 \end{figure}
 Možných základů pro měřící stanici, jednodeskových počítačů, je dnes na trhu mnoho od různých osmibitů, až po počítače 
-na architektuře ARM,  které dosahují výkonu srovnatelného s mobilními telefony. Já jsem pro mé řešení zvolil Raspberry 
-Pi ve verzi 2 a to z několika důvodů. Jednak ho mám k dispozici a dále mi nabízí běžící Linux a tudíž za mne řeší 
-spoustu problémů, od síťové komunikace, po třeba synchronizaci času. Navíc mám k dispozici spoustu digitálních pinů pro 
-připojení různých senzorů, též mám vyřešené i místní úložiště, data se mohou ukládat na SD kartu ze které běží celý 
-systém a výrazně to zjednodušuje vývoj, poněvadž mohu nahrávat nové verze programů vzdáleně, a i vzdáleně sledovat 
-jejich běh, což je pro mě výhodné, neb terárium nemám v pokoji, kde programuji. Samozřejmě že toto řešení má i své 
-nevýhody. Například v případě, že bych chtěl měřit analogové hodnoty, bych musel dokupovat převodník z analogového 
-signálu na digitální, či v případě nutnosti rozšíření na více míst, by to nebylo ekonomicky výhodné, přeci jen Raspberry 
-Pi stojí kolem 1000 Kč. Nebo pokud bych chtěl zařízení napájet z akumulátoru, tak s odběrem kolem půl ampéru by moc 
-dlouho nevydržel. Avšak v případě zmíněných problémů mi zvolené celkové řešení umožňuje poměrně komfortně změnit základ 
-stanice na něco vhodnějšího, za předpokladu, že se zvolená deska zvládne připojit na lokální síť. Například mohu použít 
-oblíbenou desku ESP8266 či ESP32, které se cenově pohybují v řádu stokorun, pinů mají dostatek, disponují Wifi čipem 
-a umožňují použití nízko odběrových módů při běhu na baterii.
+na architektuře ARM,  které dosahují výkonu srovnatelného s mobilními telefony \parencite{wiki:raspberrypi}. Já jsem pro 
+mé řešení zvolil Raspberry Pi ve verzi 2 a to z několika důvodů. Jednak ho mám k dispozici a dále mi nabízí běžící Linux 
+a tudíž za mne řeší spoustu problémů, od síťové komunikace, po třeba synchronizaci času. Navíc mám k dispozici spoustu 
+digitálních pinů pro připojení různých senzorů, též mám vyřešené i místní úložiště, data se mohou ukládat na SD kartu ze 
+které běží celý systém a výrazně to zjednodušuje vývoj, poněvadž mohu nahrávat nové verze programů vzdáleně, 
+a i vzdáleně sledovat jejich běh, což je pro mě výhodné, neb terárium nemám v pokoji, kde programuji. Samozřejmě že toto 
+řešení má i své nevýhody. Například v případě, že bych chtěl měřit analogové hodnoty, bych musel dokupovat převodník 
+z analogového signálu na digitální, či v případě nutnosti rozšíření na více míst, by to nebylo ekonomicky výhodné, přeci 
+jen Raspberry Pi stojí kolem 1000 Kč. Nebo pokud bych chtěl zařízení napájet z akumulátoru, tak s odběrem kolem půl 
+ampéru by moc dlouho nevydržel \parencite{wiki:raspberrypi}. Avšak v případě zmíněných problémů mi zvolené celkové 
+řešení umožňuje poměrně komfortně změnit základ stanice na něco vhodnějšího, za předpokladu, že se zvolená deska zvládne 
+připojit na lokální síť. Například mohu použít oblíbenou desku ESP8266 či ESP32, které se cenově pohybují v řádu 
+stokorun, pinů mají dostatek, disponují Wifi čipem a umožňují použití nízko odběrových módů při běhu na baterii 
+\parencite{root.cz:ESP}.
 
 % senzory
 \section{Senzory}
 % BME280
 \subsection{BME280}
 Pro měření hodnot v teráriu jsem zvolil senzor BME280 teploty vlhkosti a tlaku vzduchu od firmy Bosh s cenovkou kolem 
-100 Kč. Navíc díky sběrnici \gls{I2C} mi z terária vedou pouze čtyři dráty.
+200Kč. Navíc díky sběrnici \gls{I2C} mi z terária vedou pouze čtyři dráty \parencite{pajenicko:BME280}.
 
 \begin{figure}[H]
-		\centering
+    \centering
     \includegraphics[angle=270,width=0.5\textwidth]{BME280.jpg}
     \caption{Modul s BME280, stříbrný čtvereček uprostřed}
 \end{figure}
@@ -51,7 +52,7 @@ Pro měření hodnot v teráriu jsem zvolil senzor BME280 teploty vlhkosti a tla
         \hline
         Rozsah & 0 až 100\% \\ \hline
         Rozlišení & 0,008\% \\ \hline
-        Přesnost & $\pm$2\% \\ \hline
+        Přesnost & $\pm$3\% \\ \hline
         \hline
         \multicolumn{2}{|c|}{Tlak} \\ \hline
         \hline
@@ -67,7 +68,7 @@ Pro měření hodnot v teráriu jsem zvolil senzor BME280 teploty vlhkosti a tla
 Za účelem případné další analýzy, jsem umístil pár senzorů i mimo terárium, abych mohl sledovat závislost teploty vně 
 a uvnitř.Jako hlavní senzor teploty jsem použil DS18B20 vyvinutý firmou Dallas s cenou čínské kopie asi 35 Kč. Jde o můj 
 oblíbený senzor, poněvadž je přesný, snadno použitelný a díky sběrnici \gls{onewire} mu stačí pouze tři, případě dva 
-dráty.
+dráty \parencite{pajenicko:DS18B20}.
 
 \begin{figure}[H]
     \centering
@@ -92,7 +93,8 @@ dráty.
 \subsection{DHT11}
 Pro měření vlhkosti vně terária jsem použil oblíbený senzor teploty a vlhkosti DHT11 s cenovkou kolem 40 Kč. Senzor 
 teploty jsem zdvojil z důvodu velké nepřesnosti tohoto modelu. S tímto senzorem jsem měl největší problémy, zejména díky 
-jeho nestandardní sběrnici, která připomíná \gls{onewire}, ale používá jiný komunikační protokol.
+jeho nestandardní sběrnici, která připomíná \gls{onewire}, ale používá jiný komunikační protokol 
+\parencite{pajenicko:DHT11}.
 
 \begin{figure}[hbt]
     \centering
