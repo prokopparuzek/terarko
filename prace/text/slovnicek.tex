@@ -6,7 +6,7 @@
     spolutvůrce programovacího jazyka C, z jehož syntaxe vychází i syntaxe Go. Cíle jazyka jsou zejména jednoduchá 
     syntax, strmá křivka učení, či snadná tvorba vícevláknových aplikací. Kompromisem v návrhu jazyka bylo zahrnutí 
     \gls{GC}, programy jsou sice pomalejší, ale kód jednodušší. Jazyk je oblíben i mimo Google, je v něm napsán 
-  například Docker, či ho používá Dropbox.}
+  například Docker, či ho používá Dropbox. \parencite{wiki:go}}
 }
 \newglossaryentry{GC}
 {
@@ -14,24 +14,24 @@
   description={Způsob automatické správy paměti. Funguje tak, že speciální algoritmus (garbage collector) vyhledává 
     a uvolňuje úseky paměti, které již program nebo proces nepoužívá. Programátor to tedy již nemusí řešit a tím odpadá 
     celá řada chyb způsobených zapomenutím na uvolnění paměti\ldots Nevýhodou je, že si garbage collector ukousne část 
-    výkonu procesoru pro sebe, takže pak program běží pomaleji.}
+  výkonu procesoru pro sebe, takže pak program běží pomaleji. \parencite{wiki:gc}}
 }
 \newglossaryentry{cross-kompilace}
 {
   name={cross-kompilace},
-  description={Překlad programu pro jinou platformu, než na které je překládán.}
+  description={Překlad programu pro jinou platformu, než na které je překládán. \parencite{wiki:cross}}
 }
 \newglossaryentry{linkovani}
 {
   name={linkování},
   description={Proces spojení objektového souboru vygenerovaného překladačem s knihovnami, či jinými soubory. Existují 
   dva typy dynamické, kdy se knihovny připojují až za běhu a jsou společné pro všechny programy běžící na daném počítači 
-a statické, kdy jsou všechny knihovny přibaleny k výslednému spustitelnému souboru.}
+a statické, kdy jsou všechny knihovny přibaleny k výslednému spustitelnému souboru. \parencite{wiki:link}}
 }
 \newglossaryentry{knihovna}
 {
   name={knihovna},
-  description={Soubor funkcí, tříd, či konstant, které jsou využívány více programy.}
+  description={Soubor funkcí, tříd, či konstant, které jsou využívány více programy. \parencite{wiki:knihovna}}
 }
 \newglossaryentry{logrus}
 {
@@ -42,36 +42,36 @@ a statické, kdy jsou všechny knihovny přibaleny k výslednému spustitelnému
     měnit. A navíc díky němu mohu nechat ladící hlášky v programu celou dobu, jenom na začátku v inicializaci mu řeknu, 
   že mě zajímají pouze chyby a on mi hlášky s nižší prioritou, tj. debugovací informace a podobně nebude vypisovat. 
 Takže po nasazení, si jen zvolím soubor, kam má logy ukládat, abych o ně nepřišel a prioritu co má vypisovat, a pak můžu 
-jen sledovat chyby.}
+jen sledovat chyby. \parencite{github:logrus}}
 }
 \newglossaryentry{periphio}
 {
   name={periph.io},
   description={Knihovna pro jazyk \gls{go}, která se snaží zapouzdřit komunikaci po \acrshort{gpio} a poskytuje rozhraní 
-  pro oblíbené senzory, aby jejich použití bylo co nejjednodušší.}
+  pro oblíbené senzory, aby jejich použití bylo co nejjednodušší. \parencite{periphio}}
 }
 \newglossaryentry{timestamp}
 {
   name={timestamp},
-  description={Počet sekund/něco s větší přesností od 1.1. 1970}
+  description={Počet sekund/něco s větší přesností od 1.1. 1970 \parencite{wiki:timestamp}}
 }
 \newglossaryentry{brana}
 {
   name={brána},
   description={Centrální bod, kam senzory s celé domácnosti odesílají data. Zde by se rozhoduje co s nimi a případně se 
-  posílají dál. Případné akční prvky (například žárovka) by braly informace odtud.}
+  posílají dál. Případné akční prvky (například žárovka) by braly informace odtud. \parencite{wiki:gateway}}
 }
 \newglossaryentry{ssl}
 {
   name={SSL},
   description={Protokol vytvářející šifrovanou cestu mezi transportní a aplikační vrstvou. Dnes se místo něj používá 
-  protokol TLS, avšak stále se používá označení SSL.}
+  protokol TLS, avšak stále se používá označení SSL. \parencite{wiki:ssl}}
 }
 \newglossaryentry{certifikat}
 {
   name={certifikát},
-  description={Digitálně podepsaný veřejný šifrovací klíč, kterým někdo nebo něco dokazuje, že je tím za koho se 
-  vydává.}
+  description={Digitálně podepsaný veřejný šifrovací klíč, kterým někdo nebo něco dokazuje, že je tím za koho se vydává. 
+  \parencite{wiki:certifikat}}
 }
 \newglossaryentry{message-broker}
 {
@@ -83,30 +83,31 @@ jen sledovat chyby.}
     strategie, její vlastnost však je, že server zprávu pošle a pak ji zahodí, takže pokud někomu nepřijde, třeba 
     z důvodu výpadku proudu\ldots tak už ji nikdy nedostane. Někomu to může vadit, takže pak vznikají nadstavby, kdy 
     server zprávu uloží a zkouší ji poslat, dokud od klienta neobdrží potvrzení o přijetí, to je mnohem robustnější 
-  řešení.}
+  řešení. \parencite{root.cz:NATS-streaming}}
 }
 \newglossaryentry{JSON}
 {
   name={JSON},
-  description={Datový formát založený na syntaxi javascriptu, oblíbený zejména ve webových aplikacích.}
+  description={Datový formát založený na syntaxi javascriptu, oblíbený zejména ve webových aplikacích. 
+  \parencite{wiki:json}}
 }
 \newglossaryentry{gorutina}
 {
   name={gorutina},
-  description={Odlehčené vlákno}
+  description={Odlehčené vlákno \parencite{root.cz:gorutiny}}
 }
 \newglossaryentry{I2C}
 {
   name={I$^2$C},
   description={Sériová sběrnice od firmy Philips, používaná pro připojení nízko rychlostních periferií. Používá čtyři 
-  dráty: napětí, zem, hodiny a datový kabel.}
+  dráty: napětí, zem, hodiny a datový kabel. \parencite{wiki:twi}}
 }
 \newglossaryentry{onewire}
 {
   name={OneWire},
   description={Sériová sběrnice používaná výhradně firmou Dallas, pro připojení jejích produktů. Stačí jí pouze tři 
   dráty: napětí, zem a datový s tím, že lze odstranit napájecí kabel a senzor je poté napájen paraziticky s datového 
-kabelu.}
+kabelu. \parencite{wiki:onewire}}
 }
 \newglossaryentry{firebase}
 {
@@ -114,31 +115,31 @@ kabelu.}
   description={Platforma pro vytváření mobilních a webových aplikací provozovaná Googlem. Začala v roce 2011, jako 
     samostatná společnost, v roce 2014 ji Google koupil. Ten jí nabízí, jako svůj hlavní produkt pro vývoj těchto 
     aplikací. Firebase je nadstavbová aplikace nad Google Cloud Platform, avšak uživatele od ní úplně odstiňuje 
-    a umožňuje komfortně tvořit aplikace, bez nutnosti detailně zkoumat jak cloud funguje.}
+  a umožňuje komfortně tvořit aplikace, bez nutnosti detailně zkoumat jak cloud funguje. \parencite{wiki:firebase}}
 }
 \newglossaryentry{nosql}
 {
   name={NoSQL},
   description={Databázový koncept, který nepoužívá tabulky, ale ukládá data jinak. Například jako dvojice klíč-hodnota, 
-  nebo třeba jako stromovou strukturu.}
+  nebo třeba jako stromovou strukturu. \parencite{wiki:nosql}}
 }
 \newglossaryentry{hosting}
 {
   name={hosting},
-  description={Pronájem prostoru pro webové stránky na cizím serveru.}
+  description={Pronájem prostoru pro webové stránky na cizím serveru. \parencite{wiki:hosting}}
 }
 \newglossaryentry{github}
 {
   name={GitHub},
   description={GitHub je webová služba podporující vývoj softwaru za pomoci verzovacího nástroje \gls{git}. GitHub 
-  nabízí bezplatný \gls{hosting} pro open source projekty. V roce 2018 ho koupil Microsoft.}
+  nabízí bezplatný \gls{hosting} pro open source projekty. V roce 2018 ho koupil Microsoft. \parencite{wiki:github}}
 }
 \newglossaryentry{git}{
   name={Git},
   description={Git je v informatice distribuovaný systém správy verzí vytvořený Linusem Torvaldsem pro vývoj jádra 
   Linuxu. Návrh Gitu byl ovlivněn projekty BitKeeper (dříve používán pro vývoj jádra Linuxu) a Monotone. V současnosti 
   (2016) je projekt Git používán mnoha známými projekty, například: jádro Linuxu, X.Org nebo Ruby on Rails. Projekt 
-  spravuje Junio Haman, je šířen pod GPL verze 2 a jedná se o svobodný software.}
+spravuje Junio Haman, je šířen pod GPL verze 2 a jedná se o svobodný software. \parencite{wiki:git}}
 }
 
 % akronymy
