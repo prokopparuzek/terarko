@@ -44,6 +44,16 @@
 %http://ftp.cvut.cz/tex-archive/macros/latex/contrib/listings/listings.pdf
 \usepackage{listingsutf8}
 \lstset{inputencoding=utf8/latin2}
+% enable javascript
+\lstdefinelanguage{javascript}{
+  keywords={break, case, catch, continue, debugger, default, delete, do, else, finally, for, function, if, in, instanceof, new, return, switch, this, throw, try, typeof, var, void, while, with},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+  sensitive=true
+}
+
 %\usepackage{amsmath} % balíček pro pokročilou matematickou sazbu
 %\usepackage{color} % pro možnost barevného textu
 %\usepackage{fancybox} % umožňuje pokročilé rámečkování
