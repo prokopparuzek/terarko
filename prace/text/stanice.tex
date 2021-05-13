@@ -4,9 +4,14 @@ která mi umožňuje kompilovat programy na svém počítači a do stanice nahr�
 překladač implicitně \glslink{linkovani}{linkuje} staticky.
 
 % koncepce programu
-Obecná koncepce programu je asi takováto. Budu sledovat běh funkce main, kterou jsem se snažil co nejvíce vyčistit.
+Průběh programu, který provádí měření, vypadá takto.
 
-\lstinputlisting[language=go,breaklines=true]{src/measure.go}
+% graf
+\begin{figure}[H]
+		\centering
+    \includegraphics[width=\textwidth]{mereni.png}
+    \caption{Průběh programu}
+\end{figure}
 
 Na začátku importuji šest \glslink{knihovna}{knihoven}, konkrétně používám části standardní \glslink{knihovna}{knihovny} 
 pro práci s časem a operačním systémem, \glslink{knihovna}{knihovnu} pro práci s periferiemi a dále to jsou 
@@ -16,8 +21,6 @@ logovat, kam to má zapsat a jak to má zformátovat. Poté otevřu spojení s b
 \glslink{knihovna}{knihovnu} na použití periferií a nastavím cron, aby mi spustil měření každých 15 minut. Nakonec je 
 takový trik, jehož jediným účelem je, aby hlavní gorutina neskončila, jedná se o čtení z kanálu do kterého, však nikdy 
 nic nezapíši. A jelikož jde o blokující operaci, program nikdy neskončí.
-
-% graf
 
 % měření
 \paragraph*{Měření}

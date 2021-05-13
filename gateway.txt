@@ -1,0 +1,11 @@
+@startuml
+scale 4096 width
+(*) -right-> "Načtení knihoven"
+"Načtení knihoven" -right-> "Inicializace logování"
+"Inicializace logování" -right-> "Spojení s NATS"
+"Spojení s NATS" -down-> "Fail"
+"Fail" --> [Retry] "Spojení s NATS"
+"Spojení s NATS" -right-> "Spojení s Firebase"
+"Spojení s Firebase" -right-> [Přihlášení k odběru] "NATS"
+"NATS" --> [Přišla zpráva] "Poslání do Firebase"
+@enduml
