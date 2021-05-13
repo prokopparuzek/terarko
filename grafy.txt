@@ -1,0 +1,12 @@
+@startuml
+scale 4096 width
+(*) -right-> "Načtení knihoven"
+"Načtení knihoven" -right-> "Zkus obnovit sezení"
+"Zkus obnovit sezení" --> [Fail] "Přihlaš se"
+"Zkus obnovit sezení" -right-> [OK] "Spoj se s firestorem"
+"Přihlaš se" --> "Spoj se s firestorem"
+"Spoj se s firestorem" -right-> "Načti data"
+"Načti data" -right-> "Zobraz graf"
+"Zobraz graf" --> "Zobraz jiný"
+"Zobraz jiný" --> "Načti data"
+@enduml
