@@ -25,9 +25,10 @@ uživatelů, ale dostačuje.
 Následné vykreslení grafů už je v podstatě jen otázka, jak převést data z \gls{firebase} do pole. Začnu tím, že vyberu 
 správnou kolekci, dle použitého senzoru, tu si seřadím podle \glslink{timestamp}{timestampu} a z ní vezmu posledních 192 
 hodnot, což odpovídá cca posledním 48 hodinám. Následně pouze proiteruji přes všechna data a přidám je do pole hodnot, 
-jediná výjimka je u času, který před tím převedu na čitelný tvar a do aktuálního časového pásma. Pak už data pouze 
-vykreslím. Když mám v jednom grafu více datových polí, vykresluji je nad sebe se stejnou časovou osou, abych mohl 
-porovnávat odpovídající hodnoty. Výsledek pak vypadá nějak takto.
+jediná výjimka je u času, který před tím převedu na čitelný tvar a do aktuálního časového pásma. Pak už data v poli 
+pouze předám \glslink{knihovna}{knihovně} \gls{plotly}, která je vykreslí. Když mám v jednom grafu více datových polí, 
+vykresluji je nad sebe se stejnou časovou osou, abych mohl porovnávat odpovídající hodnoty. Výsledek pak vypadá nějak 
+takto.
 
 % obrázky grafů
 % BME280
