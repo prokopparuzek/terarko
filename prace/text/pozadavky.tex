@@ -12,33 +12,32 @@ trendy, ale nepotřebuji data z každé minuty.
 % ukládání
 Další z požadavků je na ukládání dat. Když už je změřím, tak je chci mít vždy uložená, tedy i při výpadku internetu 
 a podobně. Při výpadku proudu nic nezměřím, takže to není třeba řešit. Co se týče vzdáleného ukládání, nepovažuji za 
-důležité, aby se všechna data propsala do cloudu, tedy i v případě nějakého výpadku se odeslala data co jsem změřil, ale 
-neodeslal. Když přijdu o jedno měření během krátkého výpadku, tak to vadit nebude.% a při větším nebo nějaké chybě si toho 
+důležité, aby se všechna data propsala do cloudu, tedy i v případě nějakého výpadku se, poté odeslala data co jsem 
+změřil, ale neodeslal. Když přijdu o jedno měření během krátkého výpadku, tak to vadit nebude.% a při větším nebo nějaké chybě si toho 
 %všimnu a stejně to bude třeba opravit.
 
 % analýza dat
 Základní požadavek je pouze zobrazení dat. Avšak hezká by byla možnost zobrazit si nějaké pokročilejší statistiky. Takže 
 volitelně přidávám požadavek na zobrazení různých časových rámců a statistiky k onomu časovému období, například 
-průměrná, nejvyšší, nejnižší či medián teploty a vlhkosti.% Případně různé tendence, derivace, co bude v možnostech 
+průměrná, nejvyšší, nejnižší hodnota či medián\ldots % Případně různé tendence, derivace, co bude v možnostech 
 %vybraného nástroje.
 
 % UI
-Nároky na uživatelské rozhraní v podstatě nemám. Pro správu senzorů je nepotřebné. Stejně moc obměňovat, či přidávat 
-nebudu, a i kdyby stejně si  pro ně budu muset napsat obslužný program. Udělat nějaký \glslink{knihovna}{knihovnu} pro 
-více senzorů není mým cílem. Pro zobrazení hodnot je důležité, ale ohledně nároků mi bude stačit velmi jednoduché, bude 
-stačit jediná stránka. Další části u nichž by bylo třeba komunikovat s uživatelem mě nenapadají. Možná správa uživatelů 
-s přístupem, ale vzhledem k tomu, že to dělám pro sebe bych to vynechal.
+Nároky na uživatelské rozhraní v podstatě nemám. Pro správu senzorů je nepotřebné. Stejně moc obměňovat či přidávat 
+nebudu, a i kdyby stejně si  pro ně budu muset napsat obslužný program. Udělat nějakou \glslink{knihovna}{knihovnu} pro 
+více senzorů není mým cílem. Pro zobrazení hodnot je důležité, ale ohledně nároků mi bude stačit velmi jednoduché 
+rozhraní, stačit bude jediná stránka. Další části u nichž by bylo třeba komunikovat s uživatelem mě nenapadají. Možná 
+správa uživatelů s přístupem, ale vzhledem k tomu, že to dělám pro sebe bych to vynechal.
 
 % bezpečnost
-K bezpečnosti bych rád zmínil toto. Bylo by dobré mít komunikaci po celé komunikační trase šifrovanou, ale dokud řešení 
-neobsahuje ovládání čehosi, není to úplně nezbytné. Případný útočník by si tak maximálně zjistil vlhkost\ldots v teráriu
+K bezpečnosti bych rád zmínil toto. Bylo by dobré mít komunikaci po celé trase šifrovanou, ale dokud řešení neobsahuje 
+ovládání čehosi, není to úplně nezbytné. Případný útočník by si tak maximálně zjistil vlhkost\ldots v teráriu
 nebo by se mohl teoreticky vydávat za teploměr a kazit mi data. To by mohl být problém, takže pokud nevyžaduji 
-šifrování, ověření toho kdo posílá data bych do požadavků zahrnul. Zabezpečení však považuji za důležité u samotné 
-webové stránky, která bude vystavena veřejně. Ne že by mi vadilo, že někdo sleduje jak se mají mé kytičky, ale mohlo by 
-se z toho dát odvodit, že je nezalévám tj. jsem pryč a v bytě nikdo není.% Pokud si někdo dá tu práci, že mi napíchne 
-připojení, nebo 
-%přijede a odposlechne data z domácí sítě, tak má asi i možnosti jak si to, že nejsem doma zjistit jinak. Rozhodně to 
-%ale bude složitější než otevření webové stránky.
+šifrování, ověření toho, kdo posílá data, bych do požadavků zahrnul. Zabezpečení však považuji za důležité u samotné 
+webové stránky, která bude vystavena veřejně. Ne že by mi vadilo, že někdo sleduje, jak se mají mé kytičky, ale mohlo by 
+se z toho dát odvodit, že je nezalévám tj. jsem pryč a v bytě nikdo není. Pokud si někdo dá tu práci, že mi napíchne 
+připojení, nebo přijede a odposlechne data z domácí sítě, tak má asi i možnosti jak si to, že nejsem doma zjistit jinak. 
+Rozhodně to ale bude složitější než otevření webové stránky.
 
 % cena
 %Pak tu mám poslední z požadavků a tím je cena. Nejraději bych ho neřešil, ale žijeme ve světě kde je tento požadavek 

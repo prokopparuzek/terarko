@@ -9,21 +9,20 @@
     \includegraphics[width=0.8\textwidth]{RPi2.jpg}
     \caption{Raspberry pi 2}
 \end{figure}
-Možných základů pro měřící stanici, jednodeskových počítačů, je dnes na trhu mnoho od různých osmibitů, až po počítače 
-na architektuře ARM,  které dosahují výkonu srovnatelného s mobilními telefony \parencite{wiki:raspberrypi}. Já jsem pro 
-mé řešení zvolil Raspberry Pi ve verzi 2 a to z několika důvodů. Jednak ho mám k dispozici a dále mi nabízí běžící Linux 
-a tudíž za mne řeší spoustu problémů, od síťové komunikace, po třeba synchronizaci času. Navíc mám k dispozici spoustu 
-digitálních pinů pro připojení různých senzorů, též mám vyřešené i místní úložiště, data se mohou ukládat na SD kartu ze 
-které běží celý systém a výrazně to zjednodušuje vývoj, poněvadž mohu nahrávat nové verze programů vzdáleně, 
-a i vzdáleně sledovat jejich běh, což je pro mě výhodné, neb terárium nemám v pokoji, kde programuji. Samozřejmě že toto 
-řešení má i své nevýhody. Například v případě, že bych chtěl měřit analogové hodnoty, bych musel dokupovat převodník 
-z analogového signálu na digitální, či v případě nutnosti rozšíření na více míst, by to nebylo ekonomicky výhodné, přeci 
-jen Raspberry Pi stojí kolem 1000 Kč. Nebo pokud bych chtěl zařízení napájet z akumulátoru, tak s odběrem kolem půl 
-ampéru by moc dlouho nevydržel \parencite{wiki:raspberrypi}. Avšak v případě zmíněných problémů mi zvolené celkové 
-řešení umožňuje poměrně komfortně změnit základ stanice na něco vhodnějšího, za předpokladu, že se zvolená deska zvládne 
-připojit na lokální síť. Například mohu použít oblíbenou desku ESP8266 či ESP32, které se cenově pohybují v řádu 
-stokorun, pinů mají dostatek, disponují Wifi čipem a umožňují použití nízko odběrových módů při běhu na baterii 
-\parencite{root.cz:ESP}.
+Možných základů pro měřící stanici, je dnes na trhu mnoho, od různých osmibitů až po počítače na architektuře ARM,  
+které dosahují výkonu srovnatelného s mobilními telefony \parencite{wiki:raspberrypi}. Já jsem pro mé řešení zvolil 
+Raspberry Pi ve verzi 2 a to z několika důvodů. Jednak ho mám k dispozici a dále mi nabízí běžící Linux a tudíž za mne 
+řeší spoustu problémů, od síťové komunikace po synchronizaci času. Navíc mám k dispozici spoustu digitálních pinů pro 
+připojení různých senzorů. Též mám vyřešené i místní úložiště, data se mohou ukládat na SD kartu ze které běží celý 
+systém. Výrazně to zjednodušuje vývoj, poněvadž mohu nahrávat nové verze programů vzdáleně, a i vzdáleně sledovat jejich 
+běh, což je pro mě výhodné, neb terárium nemám v pokoji, kde programuji. Samozřejmě že toto řešení má i své nevýhody. 
+Například v případě, že bych chtěl měřit analogové hodnoty, bych musel dokupovat převodník z analogového signálu na 
+digitální. V případě nutnosti rozšíření na více míst, by to nebylo ekonomicky výhodné, přeci jen Raspberry Pi stojí 
+kolem 1000 Kč. Nebo pokud bych chtěl zařízení napájet z akumulátoru, tak s odběrem kolem půl ampéru by moc dlouho 
+nevydržel \parencite{wiki:raspberrypi}. Avšak v případě zmíněných problémů mi zvolené celkové řešení umožňuje poměrně 
+komfortně změnit základ stanice na něco vhodnějšího za předpokladu, že se zvolená deska zvládne připojit na lokální síť. 
+Například mohu použít oblíbenou desku ESP8266 či ESP32, které se cenově pohybují v řádu stokorun, pinů mají dostatek, 
+disponují Wifi čipem a umožňují použití nízko odběrových módů při běhu na baterii \parencite{root.cz:ESP}.
 
 % senzory
 \section{Senzory}
@@ -65,9 +64,9 @@ Pro měření hodnot v teráriu jsem zvolil senzor BME280 teploty vlhkosti a tla
 
 % DS18B20
 \subsection{DS18B20}
-Za účelem případné další analýzy, jsem umístil pár senzorů i mimo terárium, abych mohl sledovat závislost teploty vně 
+Za účelem případné další analýzy jsem umístil pár senzorů i mimo terárium, abych mohl sledovat závislost teploty vně 
 a uvnitř.Jako hlavní senzor teploty jsem použil DS18B20 vyvinutý firmou Dallas s cenou čínské kopie asi 35 Kč. Jde o můj 
-oblíbený senzor, poněvadž je přesný, snadno použitelný a díky sběrnici \gls{onewire} mu stačí pouze tři, případě dva 
+oblíbený senzor, poněvadž je přesný, snadno použitelný a díky sběrnici \gls{onewire} mu stačí pouze tři, případně dva 
 dráty \parencite{pajenicko:DS18B20}.
 
 \begin{figure}[H]
@@ -123,8 +122,8 @@ jeho nestandardní sběrnici, která připomíná \gls{onewire}, ale používá 
 
 % gateway
 \section{Brána}
-Jako brána pro komunikaci s internetem se dá taky použit téměř cokoli, ale přeci jen jsou na ní kladeny větší nároky než 
-na měřící stanici. Mimo nutnosti možnosti připojení do sítě je též třeba výpočetní výkon a paměť, dostatečná na 
-komunikaci s cloudem, řešení šifrování, běh nějakého message brokera\ldots, tedy nejlépe nějakou desku s operačním 
-systémem, který mi tohle všechno umožní. Já jsem zvolil opět Raspberry Pi, tentokrát ve verzi 3 opět z velmi 
-jednoduchého důvodu, už mi doma běží, jako takový domácí server.
+Jako brána pro komunikaci s internetem se dá taky použít téměř cokoli, ale přeci jen jsou na ní kladeny větší nároky než 
+na měřící stanici. Mimo nutnosti možnosti připojení do sítě je též třeba výpočetní výkon a paměť dostatečná na 
+komunikaci s cloudem, řešení šifrování, běh nějakého \glslink{message-broker}{message brokera}\ldots, tedy nejlépe 
+nějakou desku s operačním systémem, který mi tohle všechno umožní. Já jsem zvolil opět Raspberry Pi, tentokrát ve verzi 
+3 opět z velmi jednoduchého důvodu, už mi doma běží, jako takový domácí server.
