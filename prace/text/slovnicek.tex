@@ -2,11 +2,11 @@
 \newglossaryentry{go}
 {
   name={Go},
-  description={Kompilovaný, staticky typovaný jazyk od Googlu, a na jehož vývoji se podílel například Ken Thompson, 
+  description={Kompilovaný staticky typovaný jazyk od Googlu, na jehož vývoji se podílel například Ken Thompson, 
     spolutvůrce programovacího jazyka C, z jehož syntaxe vychází i syntaxe Go. Cíle jazyka jsou zejména jednoduchá 
-    syntax, strmá křivka učení, či snadná tvorba vícevláknových aplikací. Kompromisem v návrhu jazyka bylo zahrnutí 
+    syntax, strmá křivka učení či snadná tvorba vícevláknových aplikací. Kompromisem v návrhu jazyka bylo zahrnutí 
     \gls{GC}, programy jsou sice pomalejší, ale kód jednodušší. Jazyk je oblíben i mimo Google, je v něm napsán 
-  například Docker, či ho používá Dropbox. \parencite{wiki:go}}
+  například Docker či ho používá Dropbox. \parencite{wiki:go}}
 }
 \newglossaryentry{GC}
 {
@@ -24,14 +24,14 @@
 \newglossaryentry{linkovani}
 {
   name={linkování},
-  description={Proces spojení objektového souboru vygenerovaného překladačem s knihovnami, či jinými soubory. Existují 
-  dva typy dynamické, kdy se knihovny připojují až za běhu a jsou společné pro všechny programy běžící na daném počítači 
-a statické, kdy jsou všechny knihovny přibaleny k výslednému spustitelnému souboru. \parencite{wiki:link}}
+  description={Proces spojení objektového souboru vygenerovaného překladačem s knihovnami či jinými soubory. Existují 
+  dva typy: dynamické, kdy se knihovny připojují až za běhu a jsou společné pro všechny programy běžící na daném 
+počítači a statické, kdy jsou všechny knihovny přibaleny k výslednému spustitelnému souboru. \parencite{wiki:link}}
 }
 \newglossaryentry{knihovna}
 {
   name={knihovna},
-  description={Soubor funkcí, tříd, či konstant, které jsou využívány více programy. \parencite{wiki:knihovna}}
+  description={Soubor funkcí, tříd či konstant, které jsou využívány více programy. \parencite{wiki:knihovna}}
 }
 \newglossaryentry{logrus}
 {
@@ -58,7 +58,7 @@ jen sledovat chyby. \parencite{github:logrus}}
 \newglossaryentry{brana}
 {
   name={brána},
-  description={Centrální bod, kam senzory s celé domácnosti odesílají data. Zde by se rozhoduje co s nimi a případně se 
+  description={Centrální bod, kam senzory s celé domácnosti odesílají data. Zde se rozhoduje, co s nimi a případně se 
   posílají dál. Případné akční prvky (například žárovka) by braly informace odtud. \parencite{wiki:gateway}}
 }
 \newglossaryentry{ssl}
@@ -77,13 +77,13 @@ jen sledovat chyby. \parencite{github:logrus}}
 {
   name={message broker},
   description={Server zajišťující komunikaci, obvykle se používá právě v IoT nebo třeba v distribuovaných systémech. 
-    Funguje na principu tzv. témat asi takto, já mu pošlu zprávu s určitým tématem (názvem), obsahující zrovna třeba 
-    naměřené teploty a on ji přepošle všem, kdo jsou přihlášeni k odběru zpráv daného tématu. Může se stát, že se 
-    jednotlivé části v různých programech jmenují jinak, ale princip je stejný. Toto je takzvaná Publish-Subscribe 
-    strategie, její vlastnost však je, že server zprávu pošle a pak ji zahodí, takže pokud někomu nepřijde, třeba 
-    z důvodu výpadku proudu\ldots tak už ji nikdy nedostane. Někomu to může vadit, takže pak vznikají nadstavby, kdy 
-    server zprávu uloží a zkouší ji poslat, dokud od klienta neobdrží potvrzení o přijetí, to je mnohem robustnější 
-  řešení. \parencite{root.cz:NATS-streaming}}
+    Funguje na principu tzv. témat asi takto, já mu pošlu zprávu s určitým tématem (názvem) obsahující třeba naměřené 
+    teploty a on ji přepošle všem, kdo jsou přihlášeni k odběru zpráv daného tématu. Může se stát, že se jednotlivé 
+    části v různých programech jmenují jinak, ale princip je stejný. Toto je takzvaná Publish-Subscribe strategie, její 
+    vlastnost však je, že server zprávu pošle, a pak ji zahodí, takže pokud někomu nepřijde, třeba z důvodu výpadku 
+    proudu\ldots tak už ji nikdy nedostane. Někomu to může vadit, takže pak vznikají nadstavby, kdy server zprávu uloží 
+    a zkouší ji poslat, dokud od klienta neobdrží potvrzení o přijetí, to je mnohem robustnější řešení. 
+  \parencite{root.cz:NATS-streaming}}
 }
 \newglossaryentry{JSON}
 {
@@ -105,17 +105,17 @@ jen sledovat chyby. \parencite{github:logrus}}
 \newglossaryentry{onewire}
 {
   name={OneWire},
-  description={Sériová sběrnice používaná výhradně firmou Dallas, pro připojení jejích produktů. Stačí jí pouze tři 
+  description={Sériová sběrnice používaná výhradně firmou Dallas pro připojení jejích produktů. Stačí jí pouze tři 
   dráty: napětí, zem a datový s tím, že lze odstranit napájecí kabel a senzor je poté napájen paraziticky s datového 
 kabelu. \parencite{wiki:onewire}}
 }
 \newglossaryentry{firebase}
 {
   name={Firebase},
-  description={Platforma pro vytváření mobilních a webových aplikací provozovaná Googlem. Začala v roce 2011, jako 
-    samostatná společnost, v roce 2014 ji Google koupil. Ten jí nabízí, jako svůj hlavní produkt pro vývoj těchto 
+  description={Platforma pro vytváření mobilních a webových aplikací provozovaná Googlem. Začala v roce 2011 jako 
+    samostatná společnost, v roce 2014 ji Google koupil. Ten jí nabízí jako svůj hlavní produkt pro vývoj těchto 
     aplikací. Firebase je nadstavbová aplikace nad Google Cloud Platform, avšak uživatele od ní úplně odstiňuje 
-  a umožňuje komfortně tvořit aplikace, bez nutnosti detailně zkoumat jak cloud funguje. \parencite{wiki:firebase}}
+  a umožňuje komfortně tvořit aplikace bez nutnosti detailně zkoumat jak cloud funguje. \parencite{wiki:firebase}}
 }
 \newglossaryentry{nosql}
 {
@@ -143,7 +143,7 @@ spravuje Junio Haman, je šířen pod GPL verze 2 a jedná se o svobodný softwa
 }
 \newglossaryentry{spa}{
   name={Single-page application},
-  description={Webová aplikace která s uživatelem reaguje pomocí dynamické překreslování jediné stránky, místo načítání 
+  description={Webová aplikace která s uživatelem reaguje pomocí dynamického překreslování jediné stránky místo načítání 
   nových. Jejím cílem je vytvořit zdání nativní aplikace. \parencite{wiki:spa}}
 }
 \newglossaryentry{plotly}{
